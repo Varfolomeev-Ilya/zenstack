@@ -8,6 +8,15 @@
     "baseUrl": "src",
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["vite/client", "node"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@pages/*": ["./src/pages/*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,

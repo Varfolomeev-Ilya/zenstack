@@ -16,9 +16,6 @@ export default defineConfig({
       '@pages': resolve(__dirname, 'src/pages'),
     },
   },
-  css: {
-    postcss: './postcss.config.js',
-  },
   server: {
     port: 3000,
     open: true,
