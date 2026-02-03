@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
+import importPlugin from 'eslint-plugin-import';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
@@ -42,6 +43,7 @@ export default defineConfig([
     },
     plugins: {
       prettier,
+      import: importPlugin,
     },
     settings: {
       react: {
@@ -49,6 +51,7 @@ export default defineConfig([
       },
     },
     rules: {
+      'react/react-in-jsx-scope': 'off',
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-void': 'error',
