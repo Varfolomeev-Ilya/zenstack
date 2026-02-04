@@ -5,7 +5,10 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from '../App';
 import { ROUTES } from '../constants/index';
 
+import PrivateRoute from './PrivateRoute';
+
 const LoginPage = lazy(() => import('../pages/Login/Login'));
+const AuthCallbackPage = lazy(() => import('../pages/AuthCallback/AuthCallback'));
 
 export const routes = createBrowserRouter([
   {
@@ -23,7 +26,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: ROUTES.HOME,
-        element: <Navigate to={ROUTES.LOGIN} />,
+        element: <PrivateRoute Component={() => <div>Home</div>} />,
+      },
+      {
+        path: '/auth/callback',
+        element: <AuthCallbackPage />,
       },
     ],
   },
