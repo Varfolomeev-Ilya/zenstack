@@ -17,7 +17,8 @@
       "@assets/*": ["./src/assets/*"],
       "@pages/*": ["./src/pages/*"],
       "@constants/*": ["./src/constants/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@locales": ["./src/locales/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
