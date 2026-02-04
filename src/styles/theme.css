@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background-primary: hsl(0, 0%, 100%);
+  --color-background-secondary: hsl(0, 0%, 97%);
+
+  --color-active: hsl(243, 83%, 69%);
+
+  --color-error-primary: hsl(6, 79%, 72%);
+  --color-error-secondary: hsl(7, 67%, 94%);
+
+  --color-success-primary: hsl(159, 43%, 56%);
+  --color-success-secondary: hsl(159, 67%, 95%);
+
+  --color-text-primary: hsl(226, 13%, 33%);
+  --color-text-secondary: hsl(220, 6%, 60%);
+
+  --color-border-primary: hsl(0, 0%, 97%);
+}
+
+.dark {
+  --color-background-primary: hsl(0, 2%, 77%);
+  --color-background-secondary: hsla(210, 3%, 13%, 1);
+
+  --color-active: hsl(243, 100%, 74%);
+
+  --color-error-primary: hsl(4, 100%, 80%);
+  --color-error-secondary: hsl(6, 32%, 16%);
+
+  --color-success-primary: hsl(159, 49%, 65%);
+  --color-success-secondary: hsl(159, 20%, 15%);
+
+  --color-text-primary: hsl(220, 15%, 90%);
+  --color-text-secondary: hsl(220, 6%, 60%);
+
+  --color-border-primary: hsl(0, 0%, 18%);
+}
