@@ -1,4 +1,4 @@
-'use-client';
+'use client';
 import { FC, useEffect, useState } from 'react';
 
 import { Navigate } from 'react-router-dom';
