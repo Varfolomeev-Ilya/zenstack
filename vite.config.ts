@@ -14,6 +14,8 @@ export default defineConfig({
       '@utils': resolve(__dirname, 'src/utils'),
       '@assets': resolve(__dirname, 'src/assets'),
       '@pages': resolve(__dirname, 'src/pages'),
+      '@constants': resolve(__dirname, 'src/constants'),
+      '@api': resolve(__dirname, 'src/api'),
     },
   },
   server: {

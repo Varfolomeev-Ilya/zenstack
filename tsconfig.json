@@ -5,9 +5,9 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "src",
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["vite/client", "node"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
@@ -15,7 +15,9 @@
       "@lib/*": ["./src/lib/*"],
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
-      "@pages/*": ["./src/pages/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@api/*": ["./src/api/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
