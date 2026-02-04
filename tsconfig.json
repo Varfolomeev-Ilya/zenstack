@@ -18,7 +18,7 @@
       "@pages/*": ["./src/pages/*"],
       "@constants/*": ["./src/constants/*"],
       "@api/*": ["./src/api/*"],
-      "@locales": ["./src/locales/*"]
+      "@locales/*": ["./public/locales/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

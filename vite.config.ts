@@ -16,7 +16,7 @@ export default defineConfig({
       '@pages': resolve(__dirname, 'src/pages'),
       '@constants': resolve(__dirname, 'src/constants'),
       '@api': resolve(__dirname, 'src/api'),
-      '@locales': resolve(__dirname, 'src/locales'),
+      '@locales': resolve(__dirname, './public/locales'),
     },
   },
   server: {
