@@ -1,0 +1,11 @@
+@import "@assets/fonts/index.css";
+@import "./theme.css";
+
+* {
+  font-family: "Noto Sans", Arial, "sans-serif";
+  line-height: 1.3em;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
