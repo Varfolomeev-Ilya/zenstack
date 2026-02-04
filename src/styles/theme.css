@@ -37,3 +37,119 @@
 
   --color-border-primary: hsl(0, 0%, 18%);
 }
+
+@theme {
+  --text-family-base: "Noto Sans", Arial, sans-serif;
+  --text-size-h1: 50px;
+  --text-size-h2: 42px;
+  --text-size-h3: 32px;
+  --text-size-h4: 25px;
+  --text-size-h5: 22px;
+  --text-size-large: 18px;
+  --text-size-normal: 16px;
+  --text-size-min: 14px;
+  --text-size-caption: 12px;
+
+  --text-weight-bold: 700;
+  --font-weight-demi: 705;
+  --text-weight-medium: 500;
+
+  --text-height-tight: 120%;
+  --text-height-normal: 130%;
+
+  --text-spacing-h3: -1.6px;
+  --text-spacing-h4: -1.25px;
+  --text-spacing-h5: -2%;
+  --text-spacing-large: -0.36px;
+  --text-spacing-normal: -0.32px;
+  --text-spacing-min: -0.28px;
+  --text-spacing-caption: -2%;
+}
+
+@layer {
+  .text-h1 {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-h1);
+    font-style: normal;
+    font-weight: var(--text-weight-bold);
+    line-height: var(--text-height-tight);
+  }
+
+  .text-h3 {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-h3);
+    font-style: normal;
+    font-weight: var(--font-weight-demi);
+    line-height: var(--text-height-tight);
+    letter-spacing: var(--text-spacing-h3);
+  }
+
+  .text-h4 {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-h4);
+    font-style: normal;
+    font-weight: var(--font-weight-demi);
+    line-height: var(--text-height-tight);
+  }
+
+  .text-h5 {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-h5);
+    font-style: normal;
+    font-weight: var(--font-weight-demi);
+    line-height: var(--text-height-tight);
+  }
+
+  .text-large {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-large);
+    font-style: normal;
+    font-weight: var(--text-weight-medium);
+    line-height: var(--text-height-normal);
+    letter-spacing: var(--text-spacing-large);
+  }
+
+  .text-normal {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-normal);
+    font-style: normal;
+    font-weight: var(--text-weight-medium);
+    line-height: var(--text-height-normal);
+    letter-spacing: var(--text-spacing-normal);
+  }
+
+  .text-normal-demi {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-normal);
+    font-style: normal;
+    font-weight: var(--font-weight-demi);
+    line-height: var(--text-height-normal);
+    letter-spacing: var(--text-spacing-normal);
+  }
+
+  .text-min {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-min);
+    font-style: normal;
+    font-weight: var(--text-weight-medium);
+    line-height: var(--text-height-normal);
+    letter-spacing: var(--text-spacing-min);
+  }
+
+  .text-min-bold {
+    font-family: var(--text-family-base);
+    font-size: var(--text-size-min);
+    font-style: normal;
+    font-weight: var(--text-weight-bold);
+    line-height: var(--text-height-normal);
+    letter-spacing: var(--text-spacing-min);
+  }
+
+  .text-caption {
+    font-family: var(--text-family-base);
+    font-weight: var(--text-weight-medium);
+    font-size: var(--text-size-caption);
+    line-height: var(--text-height-tight);
+    letter-spacing: var(--text-spacing-caption);
+  }
+}
