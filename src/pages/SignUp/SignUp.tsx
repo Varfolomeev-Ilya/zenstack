@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
+import { ROUTES } from '@/constants';
+import AppLink from '@/shared/AppLink';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
@@ -54,6 +56,12 @@ const SignUp = () => {
             LeftIcon={KeySquare}
             type="password"
           />
+
+          <div className="flex items-center justify-between">
+            <p>{t('signUp.hasAccount')}</p>
+            <AppLink title={t('signUp.login')} path={ROUTES.LOGIN} />
+          </div>
+
           <Button variant="secondary" type="submit">
             {t('signUp.signUpBtn')}
           </Button>

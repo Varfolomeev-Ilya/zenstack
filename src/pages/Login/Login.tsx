@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 import { signInWithEmail, signInWithGoogle } from '@/api/auth';
 import { Button } from '@/components/ui/button';
+import { ROUTES } from '@/constants';
+import AppLink from '@/shared/AppLink';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
@@ -56,6 +58,11 @@ const Login = () => {
             LeftIcon={KeySquare}
             type="password"
           />
+
+          <div className="flex items-center justify-between">
+            <p>{t('login.noAccountYet')}</p>
+            <AppLink title={t('login.registration')} path={ROUTES.SIGNUP} />
+          </div>
 
           <Button variant="secondary" type="submit">
             {t('login.loginBtn')}
