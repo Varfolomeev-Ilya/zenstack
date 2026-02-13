@@ -17,7 +17,7 @@ i18n
         v: Date.now(),
       },
     },
-    ns: ['auth'],
+    ns: ['auth', 'common'],
 
     interpolation: {
       escapeValue: false,

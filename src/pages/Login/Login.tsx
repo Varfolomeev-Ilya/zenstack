@@ -35,7 +35,7 @@ const Login = () => {
 
         <div className="flex w-full items-center">
           <hr className="color-gray w-full"></hr>
-          <span className="p-4">{t('login.span')}</span>
+          <span className="p-4">{t('common:span')}</span>
           <hr className="color-gray w-full"></hr>
         </div>
 
@@ -43,16 +43,16 @@ const Login = () => {
           <FormInput
             name="email"
             control={control}
-            label="Email"
-            placeholder="email"
+            label={t('common:inputs.emailInput.label')}
+            placeholder={t('common:inputs.emailInput.placeholder')}
             LeftIcon={Mail}
             type="email"
           />
           <FormInput
             name="password"
             control={control}
-            label="Password"
-            placeholder="password"
+            label={t('common:inputs.passwordInput.label')}
+            placeholder={t('common:inputs.passwordInput.placeholder')}
             LeftIcon={KeySquare}
             type="password"
           />

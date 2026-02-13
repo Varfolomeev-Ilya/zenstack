@@ -25,30 +25,35 @@ const SignUp = () => {
       <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px]">
         <h1 className="mb-5 text-h3">{t('signUp.title')}</h1>
 
-        <div className="flex flex-col w-full mb-5">
+        <div className="flex flex-col w-full">
           <Button variant="outline" onClick={() => null}>
             {t('signUp.signUpWithGoogle')}
           </Button>
+        </div>
+
+        <div className="flex w-full items-center">
+          <hr className="color-gray w-full"></hr>
+          <span className="p-4">{t('common:span')}</span>
+          <hr className="color-gray w-full"></hr>
         </div>
 
         <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             name="email"
             control={control}
-            label="Email"
-            placeholder="email"
+            label={t('common:inputs.emailInput.label')}
+            placeholder={t('common:inputs.emailInput.placeholder')}
             LeftIcon={Mail}
             type="email"
           />
           <FormInput
             name="password"
             control={control}
-            label="Password"
-            placeholder="password"
+            label={t('common:inputs.passwordInput.label')}
+            placeholder={t('common:inputs.passwordInput.placeholder')}
             LeftIcon={KeySquare}
             type="password"
           />
-
           <Button variant="secondary" type="submit">
             {t('signUp.signUpBtn')}
           </Button>
