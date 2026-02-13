@@ -59,6 +59,20 @@ export default defineConfig([
       curly: ['error', 'all'],
       'eol-last': ['error', 'always'],
 
+      'no-unused-vars': 'off',
+
+      // Включаем правило для TypeScript с игнорированием переменных с подчеркиванием
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          ignoreRestSiblings: true, // игнорировать остаточные параметры при деструктуризации
+          destructuredArrayIgnorePattern: '^_', // игнорировать элементы массива с подчеркиванием
+        },
+      ],
+
       quotes: ['error', 'single'],
       'jsx-quotes': ['error', 'prefer-double'],
       semi: ['error', 'always'],
