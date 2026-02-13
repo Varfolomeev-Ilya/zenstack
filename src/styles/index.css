@@ -9,3 +9,11 @@
   padding: 0;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+#root {
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+}
