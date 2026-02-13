@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "emailInput": {
+      "placeholder": "example@gmail.com",
+      "label": "Электронная почта"
+    },
+    "passwordInput": {
+      "placeholder": "********",
+      "label": "Пароль"
+    }
+  }
+}

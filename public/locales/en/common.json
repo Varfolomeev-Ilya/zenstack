@@ -1,0 +1,13 @@
+{
+  "span": "OR",
+  "inputs": {
+    "emailInput": {
+      "placeholder": "example@gmail.com",
+      "label": "Email"
+    },
+    "passwordInput": {
+      "placeholder": "********",
+      "label": "Password"
+    }
+  }
+}

@@ -1,25 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
-const getBuildHash = () => {
-  const splittedScriptSrc = (document as any).currentScript.src.split('.');
-
-  return splittedScriptSrc[splittedScriptSrc.length - 2];
-};
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
+    supportedLngs: ['en', 'ru'],
+
     backend: {
-      loadPath: `/locales/{{lng}}/{{ns}}.json?hash=${getBuildHash()}`,
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      queryStringParams: {
+        v: Date.now(),
+      },
     },
-    ns: ['auth'],
+    ns: ['auth', 'common'],
 
     interpolation: {
       escapeValue: false,

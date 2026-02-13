@@ -1,9 +1,7 @@
-'use client';
 import { Mail, KeySquare } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { signInWithEmail, signInWithGoogle } from '@/api/auth';
 import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/constants';
 import AppLink from '@/shared/AppLink';
@@ -15,23 +13,23 @@ interface ILoginForm {
   password: string;
 }
 
-const Login = () => {
+const SignUp = () => {
   const { t } = useTranslation('auth');
   const { control, handleSubmit } = useForm<ILoginForm>();
 
   const onSubmit: SubmitHandler<ILoginForm> = data => {
     const { email, password } = data;
-    signInWithEmail(email, password);
+    console.log(email, password);
   };
 
   return (
     <AuthLayoutWrapper>
       <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px] bg-card text-card-foreground shadow-sm">
-        <h1 className="mb-5 text-h3 text-foreground">{t('login.title')}</h1>
+        <h1 className="mb-5 text-h3 text-foreground">{t('signUp.title')}</h1>
 
-        <div className="flex flex-col w-full ">
-          <Button variant="outline" onClick={signInWithGoogle}>
-            {t('login.loginWithGoogle')}
+        <div className="flex flex-col w-full">
+          <Button variant="outline" onClick={() => null}>
+            {t('signUp.signUpWithGoogle')}
           </Button>
         </div>
 
@@ -60,12 +58,12 @@ const Login = () => {
           />
 
           <div className="flex items-center justify-between text-muted-foreground text-sm">
-            <p>{t('login.noAccountYet')}</p>
-            <AppLink title={t('login.registration')} path={ROUTES.SIGNUP} />
+            <p>{t('signUp.hasAccount')}</p>
+            <AppLink title={t('signUp.login')} path={ROUTES.LOGIN} />
           </div>
 
           <Button variant="secondary" type="submit">
-            {t('login.loginBtn')}
+            {t('signUp.signUpBtn')}
           </Button>
         </form>
       </div>
@@ -73,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
