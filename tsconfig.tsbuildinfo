@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/rootlayout.tsx","./src/themeswitcher.tsx","./src/main.tsx","./src/api/auth.ts","./src/api/supabase.ts","./src/components/ui/button.tsx","./src/components/ui/input.tsx","./src/constants/index.ts","./src/hooks/usetheme.ts","./src/lib/utils.ts","./src/lib/i18n/i18n.ts","./src/pages/authcallback/authcallback.tsx","./src/pages/login/login.tsx","./src/routes/privateroute.tsx","./src/routes/routes.tsx","./src/shared/authlayoutwrapper.tsx"],"version":"5.9.3"}

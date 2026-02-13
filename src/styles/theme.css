@@ -2,43 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========== Custom variables (your app) ========== */
 :root {
-  --color-background-primary: hsl(0, 0%, 100%);
-  --color-background-secondary: hsl(0, 0%, 97%);
+  --color-active: 217 91% 60%;
+  --color-error-primary: 0 72% 51%;
+  --color-error-secondary: 0 93% 94%;
+  --color-success-primary: 160 84% 39%;
+  --color-success-secondary: 152 76% 96%;
+  --color-text-primary: 222 47% 11%;
+  --color-text-secondary: 215 16% 47%;
+  --color-border-primary: 214 32% 91%;
 
-  --color-active: hsl(243, 83%, 69%);
-
-  --color-error-primary: hsl(6, 79%, 72%);
-  --color-error-secondary: hsl(7, 67%, 94%);
-
-  --color-success-primary: hsl(159, 43%, 56%);
-  --color-success-secondary: hsl(159, 67%, 95%);
-
-  --color-text-primary: hsl(226, 13%, 33%);
-  --color-text-secondary: hsl(220, 6%, 60%);
-
-  --color-border-primary: hsl(0, 0%, 97%);
-}
-
-.dark {
-  --color-background-primary: hsl(0, 2%, 77%);
-  --color-background-secondary: hsla(210, 3%, 13%, 1);
-
-  --color-active: hsl(243, 100%, 74%);
-
-  --color-error-primary: hsl(4, 100%, 80%);
-  --color-error-secondary: hsl(6, 32%, 16%);
-
-  --color-success-primary: hsl(159, 49%, 65%);
-  --color-success-secondary: hsl(159, 20%, 15%);
-
-  --color-text-primary: hsl(220, 15%, 90%);
-  --color-text-secondary: hsl(220, 6%, 60%);
-
-  --color-border-primary: hsl(0, 0%, 18%);
-}
-
-@theme {
   --text-family-base: "Noto Sans", Arial, sans-serif;
   --text-size-h1: 50px;
   --text-size-h2: 42px;
@@ -49,14 +23,11 @@
   --text-size-normal: 16px;
   --text-size-min: 14px;
   --text-size-caption: 12px;
-
   --text-weight-bold: 700;
-  --font-weight-demi: 705;
+  --font-weight-demi: 605;
   --text-weight-medium: 500;
-
   --text-height-tight: 120%;
   --text-height-normal: 130%;
-
   --text-spacing-h3: -1.6px;
   --text-spacing-h4: -1.25px;
   --text-spacing-h5: -2%;
@@ -66,90 +37,169 @@
   --text-spacing-caption: -2%;
 }
 
-@layer {
-  .text-h1 {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-h1);
-    font-style: normal;
-    font-weight: var(--text-weight-bold);
-    line-height: var(--text-height-tight);
+.dark {
+  --color-active: 217 91% 65%;
+  --color-error-primary: 0 72% 55%;
+  --color-error-secondary: 0 40% 18%;
+  --color-success-primary: 160 70% 45%;
+  --color-success-secondary: 160 30% 14%;
+  --color-text-primary: 210 40% 98%;
+  --color-text-secondary: 215 20% 65%;
+  --color-border-primary: 217 33% 17%;
+}
+
+/* ========== Tailwind/shadcn theme (HSL components only) ========== */
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+    --chart-1: 217 91% 60%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 67% 58%;
+    --chart-5: 0 72% 51%;
   }
 
-  .text-h3 {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-h3);
-    font-style: normal;
-    font-weight: var(--font-weight-demi);
-    line-height: var(--text-height-tight);
-    letter-spacing: var(--text-spacing-h3);
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 20%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 65%;
+    --chart-1: 217 91% 65%;
+    --chart-2: 160 70% 45%;
+    --chart-3: 38 92% 55%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 0 65% 55%;
   }
+}
 
-  .text-h4 {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-h4);
-    font-style: normal;
-    font-weight: var(--font-weight-demi);
-    line-height: var(--text-height-tight);
+/* Typography classes */
+.text-h1 {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-h1);
+  font-style: normal;
+  font-weight: var(--text-weight-bold);
+  line-height: var(--text-height-tight);
+}
+
+.text-h3 {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-h3);
+  font-style: normal;
+  font-weight: var(--font-weight-demi);
+  line-height: var(--text-height-tight);
+  letter-spacing: var(--text-spacing-h3);
+}
+
+.text-h4 {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-h4);
+  font-style: normal;
+  font-weight: var(--font-weight-demi);
+  line-height: var(--text-height-tight);
+  letter-spacing: var(--text-spacing-h4);
+}
+
+.text-h5 {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-h5);
+  font-style: normal;
+  font-weight: var(--font-weight-demi);
+  line-height: var(--text-height-tight);
+  letter-spacing: var(--text-spacing-h5);
+}
+
+.text-large {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-large);
+  font-style: normal;
+  font-weight: var(--text-weight-medium);
+  line-height: var(--text-height-normal);
+  letter-spacing: var(--text-spacing-large);
+}
+
+.text-normal {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-normal);
+  font-style: normal;
+  font-weight: var(--text-weight-medium);
+  line-height: var(--text-height-normal);
+  letter-spacing: var(--text-spacing-normal);
+}
+
+.text-normal-demi {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-normal);
+  font-style: normal;
+  font-weight: var(--font-weight-demi);
+  line-height: var(--text-height-normal);
+  letter-spacing: var(--text-spacing-normal);
+}
+
+.text-min {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-min);
+  font-style: normal;
+  font-weight: var(--text-weight-medium);
+  line-height: var(--text-height-normal);
+  letter-spacing: var(--text-spacing-min);
+}
+
+.text-min-bold {
+  font-family: var(--text-family-base);
+  font-size: var(--text-size-min);
+  font-style: normal;
+  font-weight: var(--text-weight-bold);
+  line-height: var(--text-height-normal);
+  letter-spacing: var(--text-spacing-min);
+}
+
+.text-caption {
+  font-family: var(--text-family-base);
+  font-weight: var(--text-weight-medium);
+  font-size: var(--text-size-caption);
+  line-height: var(--text-height-tight);
+  letter-spacing: var(--text-spacing-caption);
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-
-  .text-h5 {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-h5);
-    font-style: normal;
-    font-weight: var(--font-weight-demi);
-    line-height: var(--text-height-tight);
-  }
-
-  .text-large {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-large);
-    font-style: normal;
-    font-weight: var(--text-weight-medium);
-    line-height: var(--text-height-normal);
-    letter-spacing: var(--text-spacing-large);
-  }
-
-  .text-normal {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-normal);
-    font-style: normal;
-    font-weight: var(--text-weight-medium);
-    line-height: var(--text-height-normal);
-    letter-spacing: var(--text-spacing-normal);
-  }
-
-  .text-normal-demi {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-normal);
-    font-style: normal;
-    font-weight: var(--font-weight-demi);
-    line-height: var(--text-height-normal);
-    letter-spacing: var(--text-spacing-normal);
-  }
-
-  .text-min {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-min);
-    font-style: normal;
-    font-weight: var(--text-weight-medium);
-    line-height: var(--text-height-normal);
-    letter-spacing: var(--text-spacing-min);
-  }
-
-  .text-min-bold {
-    font-family: var(--text-family-base);
-    font-size: var(--text-size-min);
-    font-style: normal;
-    font-weight: var(--text-weight-bold);
-    line-height: var(--text-height-normal);
-    letter-spacing: var(--text-spacing-min);
-  }
-
-  .text-caption {
-    font-family: var(--text-family-base);
-    font-weight: var(--text-weight-medium);
-    font-size: var(--text-size-caption);
-    line-height: var(--text-height-tight);
-    letter-spacing: var(--text-spacing-caption);
+  body {
+    @apply bg-background text-foreground;
   }
 }

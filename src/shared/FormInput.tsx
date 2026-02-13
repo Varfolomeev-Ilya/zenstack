@@ -36,16 +36,16 @@ const FormInput = <T extends FieldValues>({
       render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
         <div
           className={cn(
-            'relative flex flex-col w-full border border-border rounded-[10px] px-2 bg-inherit',
+            'relative flex flex-col w-full border border-border rounded-[10px] px-2 bg-background',
             fieldState.error && 'border-destructive',
           )}
         >
-          <div className="relative w-full">
+          <div className="relative w-full bg-background">
             {label && (
               <Label
                 htmlFor={name}
                 className={cn(
-                  'absolute left-2 transition-all duration-200 pointer-events-none bg-inherit px-1 z-10',
+                  'absolute left-2 transition-all duration-200 pointer-events-none bg-background rounded-full px-1 z-10',
                   value
                     ? '-top-2 text-xs opacity-100'
                     : 'top-1/2 -translate-y-1/2 text-sm opacity-60',

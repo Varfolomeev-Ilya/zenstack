@@ -12,7 +12,7 @@ interface IAppLinkProps {
 
 const AppLink: FC<IAppLinkProps> = ({ title, path, className }) => {
   return (
-    <Link to={path} className={cn('hover:underline', className)}>
+    <Link to={path} className={cn('text-primary hover:underline font-medium', className)}>
       {title}
     </Link>
   );

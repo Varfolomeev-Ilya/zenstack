@@ -24,8 +24,8 @@ const SignUp = () => {
 
   return (
     <AuthLayoutWrapper>
-      <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px]">
-        <h1 className="mb-5 text-h3">{t('signUp.title')}</h1>
+      <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px] bg-card text-card-foreground shadow-sm">
+        <h1 className="mb-5 text-h3 text-foreground">{t('signUp.title')}</h1>
 
         <div className="flex flex-col w-full">
           <Button variant="outline" onClick={() => null}>
@@ -34,9 +34,9 @@ const SignUp = () => {
         </div>
 
         <div className="flex w-full items-center">
-          <hr className="color-gray w-full"></hr>
-          <span className="p-4">{t('common:span')}</span>
-          <hr className="color-gray w-full"></hr>
+          <hr className="flex-1 border-border" />
+          <span className="px-4 text-muted-foreground text-sm">{t('common:span')}</span>
+          <hr className="flex-1 border-border" />
         </div>
 
         <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +57,7 @@ const SignUp = () => {
             type="password"
           />
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between text-muted-foreground text-sm">
             <p>{t('signUp.hasAccount')}</p>
             <AppLink title={t('signUp.login')} path={ROUTES.LOGIN} />
           </div>
