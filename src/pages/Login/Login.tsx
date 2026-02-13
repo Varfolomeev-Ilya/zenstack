@@ -25,17 +25,17 @@ const Login = () => {
   return (
     <AuthLayoutWrapper>
       <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px]">
-        <h1 className="mb-5 text-h3">{t('greet')}</h1>
+        <h1 className="mb-5 text-h3">{t('login.title')}</h1>
 
         <div className="flex flex-col w-full ">
           <Button variant="outline" onClick={signInWithGoogle}>
-            Login with Google
+            {t('login.loginWithGoogle')}
           </Button>
         </div>
 
         <div className="flex w-full items-center">
           <hr className="color-gray w-full"></hr>
-          <span className="p-4">OR</span>
+          <span className="p-4">{t('login.span')}</span>
           <hr className="color-gray w-full"></hr>
         </div>
 
@@ -58,7 +58,7 @@ const Login = () => {
           />
 
           <Button variant="secondary" type="submit">
-            Login
+            {t('login.loginBtn')}
           </Button>
         </form>
       </div>

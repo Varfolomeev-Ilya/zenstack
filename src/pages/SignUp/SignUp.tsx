@@ -23,7 +23,13 @@ const SignUp = () => {
   return (
     <AuthLayoutWrapper>
       <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px]">
-        <h1 className="mb-5 text-h3">{t('greet')}</h1>
+        <h1 className="mb-5 text-h3">{t('signUp.title')}</h1>
+
+        <div className="flex flex-col w-full mb-5">
+          <Button variant="outline" onClick={() => null}>
+            {t('signUp.signUpWithGoogle')}
+          </Button>
+        </div>
 
         <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
@@ -44,7 +50,7 @@ const SignUp = () => {
           />
 
           <Button variant="secondary" type="submit">
-            Sign up
+            {t('signUp.signUpBtn')}
           </Button>
         </form>
       </div>
