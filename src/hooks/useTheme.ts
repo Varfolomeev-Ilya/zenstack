@@ -1,39 +1,45 @@
-import { useEffect, useState } from 'react';
+'use client';
+import { useCallback, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
+  const saved = localStorage.getItem('theme') as Theme | null;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return (saved === 'dark' || saved === 'light' ? saved : null) ?? (prefersDark ? 'dark' : 'light');
+}
+
+function applyThemeToDOM(nextTheme: Theme) {
+  const root = document.documentElement;
+  root.classList.remove('light', 'dark');
+  root.classList.add(nextTheme);
+  root.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('theme', nextTheme);
+}
+
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('light');
-
-  const applyTheme = () => {
-    const root = document.documentElement;
-
-    if (theme === 'dark') {
-      root.classList.remove('light');
-      root.classList.add('dark');
-    } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-    }
-
-    root.setAttribute('data-theme', theme);
-
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-    localStorage.setItem('theme', theme);
-  };
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    const init = async () => {
-      const saved = localStorage.getItem('theme') as Theme;
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initialTheme = saved || (prefersDark ? 'dark' : 'light');
+    applyThemeToDOM(theme);
+  }, [theme]);
 
-      setTheme(initialTheme);
-      applyTheme();
-    };
-
-    init();
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
 
-  return { theme, setTheme: applyTheme, toggleTheme: applyTheme };
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = () => setTheme(getInitialTheme());
+    media.addEventListener('change', handler);
+    return () => media.removeEventListener('change', handler);
+  }, []);
+
+  return {
+    theme,
+    toggleTheme,
+  };
 }
