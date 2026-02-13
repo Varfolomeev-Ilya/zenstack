@@ -8,6 +8,7 @@ import { ROUTES } from '../constants/index';
 import PrivateRoute from './PrivateRoute';
 
 const LoginPage = lazy(() => import('../pages/Login/Login'));
+const SignUpPage = lazy(() => import('../pages/SignUp/SignUp'));
 const AuthCallbackPage = lazy(() => import('../pages/AuthCallback/AuthCallback'));
 
 export const routes = createBrowserRouter([
@@ -19,6 +20,10 @@ export const routes = createBrowserRouter([
       {
         path: ROUTES.LOGIN,
         element: <LoginPage />,
+      },
+      {
+        path: ROUTES.SIGNUP,
+        element: <SignUpPage />,
       },
       {
         path: ROUTES.SIGNUP,
