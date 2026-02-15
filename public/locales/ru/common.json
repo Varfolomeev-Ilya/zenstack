@@ -7,6 +7,14 @@
     "passwordInput": {
       "placeholder": "********",
       "label": "Пароль"
+    },
+    "newPasswordInput": {
+      "label": "Новый пароль",
+      "placeholder": "Минимум 6 символов"
+    },
+    "repeatPasswordInput": {
+      "label": "Подтвердите пароль",
+      "placeholder": "Введите пароль еще раз"
     }
   }
 }

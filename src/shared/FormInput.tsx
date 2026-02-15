@@ -48,7 +48,7 @@ const FormInput = <T extends FieldValues>({
                   'absolute left-2 transition-all duration-200 pointer-events-none bg-background rounded-full px-1 z-10',
                   value
                     ? '-top-2 text-xs opacity-100'
-                    : 'top-1/2 -translate-y-1/2 text-sm opacity-60',
+                    : 'top-1/2 -translate-y-1/2 text-sm opacity-0',
                   LeftIcon && value ? 'left-5 opacity-100' : LeftIcon && 'left-5 opacity-0',
                 )}
               >
@@ -57,7 +57,7 @@ const FormInput = <T extends FieldValues>({
             )}
 
             {LeftIcon && (
-              <LeftIcon className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
+              <LeftIcon className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground mt-[1px] z-10" />
             )}
 
             <Input

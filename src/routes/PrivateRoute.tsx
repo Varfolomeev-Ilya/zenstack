@@ -15,8 +15,12 @@ const PrivateRoute: FC<IPrivateRouteProps> = ({ Component }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setIsAuthenticated(Boolean(session));
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user && !user.email_confirmed_at) {
+        return <Navigate replace to={ROUTES.CONFIRM_EMAIL} />;
+      }
+
+      setIsAuthenticated(Boolean(user));
       setIsLoading(false);
     });
 

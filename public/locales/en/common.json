@@ -8,6 +8,14 @@
     "passwordInput": {
       "placeholder": "********",
       "label": "Password"
+    },
+    "newPasswordInput": {
+      "label": "New password",
+      "placeholder": "Minimum 6 characters"
+    },
+    "repeatPasswordInput": {
+      "label": "Repeat password",
+      "placeholder": "Repeat password again"
     }
   }
 }

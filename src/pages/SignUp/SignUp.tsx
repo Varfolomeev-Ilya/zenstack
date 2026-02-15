@@ -2,8 +2,9 @@ import { Mail, KeySquare } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
+import { signUpWithEmail } from '@/api/auth';
 import { Button } from '@/components/ui/button';
-import { ROUTES } from '@/constants';
+import { CONFIRM_EMAIL_LINK, ROUTES } from '@/constants';
 import AppLink from '@/shared/AppLink';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
@@ -17,14 +18,20 @@ const SignUp = () => {
   const { t } = useTranslation('auth');
   const { control, handleSubmit } = useForm<ILoginForm>();
 
-  const onSubmit: SubmitHandler<ILoginForm> = data => {
-    const { email, password } = data;
-    console.log(email, password);
+  const onSubmit: SubmitHandler<ILoginForm> = async data => {
+    try {
+      const { email, password } = data;
+      localStorage.setItem('pendingEmail', email);
+
+      await signUpWithEmail(email, password, CONFIRM_EMAIL_LINK);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <AuthLayoutWrapper>
-      <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px] bg-card text-card-foreground shadow-sm">
+      <>
         <h1 className="mb-5 text-h3 text-foreground">{t('signUp.title')}</h1>
 
         <div className="flex flex-col w-full">
@@ -66,7 +73,7 @@ const SignUp = () => {
             {t('signUp.signUpBtn')}
           </Button>
         </form>
-      </div>
+      </>
     </AuthLayoutWrapper>
   );
 };
