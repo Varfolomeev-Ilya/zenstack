@@ -2,6 +2,7 @@
 import { Mail, KeySquare } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { signInWithEmail, signInWithGoogle } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -19,14 +20,24 @@ const Login = () => {
   const { t } = useTranslation('auth');
   const { control, handleSubmit } = useForm<ILoginForm>();
 
-  const onSubmit: SubmitHandler<ILoginForm> = data => {
-    const { email, password } = data;
-    signInWithEmail(email, password);
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<ILoginForm> = async data => {
+    try {
+      const { email, password } = data;
+      const response = await signInWithEmail(email, password);
+
+      if (response.data.session) {
+        navigate(ROUTES.HOME);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <AuthLayoutWrapper>
-      <div className="flex flex-col w-full max-w-[540px] p-5 border border-border rounded-[14px] bg-card text-card-foreground shadow-sm">
+      <>
         <h1 className="mb-5 text-h3 text-foreground">{t('login.title')}</h1>
 
         <div className="flex flex-col w-full ">
@@ -61,14 +72,14 @@ const Login = () => {
 
           <div className="flex items-center justify-between text-muted-foreground text-sm">
             <p>{t('login.noAccountYet')}</p>
-            <AppLink title={t('login.registration')} path={ROUTES.SIGNUP} />
+            <AppLink title={t('login.registration')} path={ROUTES.SIGN_UP} />
           </div>
 
           <Button variant="secondary" type="submit">
             {t('login.loginBtn')}
           </Button>
         </form>
-      </div>
+      </>
     </AuthLayoutWrapper>
   );
 };
