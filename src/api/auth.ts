@@ -39,6 +39,12 @@ const resendConfirmationEmail = async (email: string) => {
   });
 };
 
+const resetPasswordForEmail = async (email: string, redirectTo: string) => {
+  return supabase.auth.resetPasswordForEmail(email, {
+    redirectTo,
+  });
+};
+
 const getUser = async () => {
   return supabase.auth.getUser();
 };
@@ -59,4 +65,5 @@ export {
   getSession,
   signOut,
   resendConfirmationEmail,
+  resetPasswordForEmail,
 };

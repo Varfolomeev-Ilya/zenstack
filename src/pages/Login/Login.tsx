@@ -74,6 +74,10 @@ const Login = () => {
             <p>{t('login.noAccountYet')}</p>
             <AppLink title={t('login.registration')} path={ROUTES.SIGN_UP} />
           </div>
+          <div className="flex items-center justify-between text-muted-foreground text-sm">
+            <p>{t('login.forgotPassword')}</p>
+            <AppLink title={t('login.recoverPassword')} path={ROUTES.FORGOT_PASSWORD} />
+          </div>
 
           <Button variant="secondary" type="submit">
             {t('login.loginBtn')}
