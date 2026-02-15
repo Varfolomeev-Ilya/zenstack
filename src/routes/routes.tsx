@@ -12,6 +12,8 @@ const SignUpPage = lazy(() => import('../pages/SignUp/SignUp'));
 const AuthCallbackPage = lazy(() => import('../pages/AuthCallback/AuthCallback'));
 const ConfirmEmailPage = lazy(() => import('../pages/ConfirmEmail/ConfirmEmail'));
 const LinkExpiredPage = lazy(() => import('../pages/LinkExpired/LinkExpired'));
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPassword/ForgotPassword'));
+const UpdatePasswordPage = lazy(() => import('../pages/UpdatePassword/UpdatePassword'));
 
 export const routes = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ export const routes = createBrowserRouter([
       {
         path: ROUTES.LINK_EXPIRED,
         element: <LinkExpiredPage />,
+      },
+      {
+        path: ROUTES.FORGOT_PASSWORD,
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: ROUTES.UPDATE_PASSWORD,
+        element: <UpdatePasswordPage />,
       },
 
       {
