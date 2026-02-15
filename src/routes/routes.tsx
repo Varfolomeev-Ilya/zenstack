@@ -10,6 +10,8 @@ import PrivateRoute from './PrivateRoute';
 const LoginPage = lazy(() => import('../pages/Login/Login'));
 const SignUpPage = lazy(() => import('../pages/SignUp/SignUp'));
 const AuthCallbackPage = lazy(() => import('../pages/AuthCallback/AuthCallback'));
+const ConfirmEmailPage = lazy(() => import('../pages/ConfirmEmail/ConfirmEmail'));
+const LinkExpiredPage = lazy(() => import('../pages/LinkExpired/LinkExpired'));
 
 export const routes = createBrowserRouter([
   {
@@ -22,11 +24,11 @@ export const routes = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: ROUTES.SIGNUP,
+        path: ROUTES.SIGN_UP,
         element: <SignUpPage />,
       },
       {
-        path: ROUTES.SIGNUP,
+        path: ROUTES.SIGN_UP,
         element: <></>,
       },
       {
@@ -34,7 +36,16 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute Component={() => <div>Home</div>} />,
       },
       {
-        path: '/auth/callback',
+        path: ROUTES.CONFIRM_EMAIL,
+        element: <ConfirmEmailPage />,
+      },
+      {
+        path: ROUTES.LINK_EXPIRED,
+        element: <LinkExpiredPage />,
+      },
+
+      {
+        path: ROUTES.AUTH_CALLBACK,
         element: <AuthCallbackPage />,
       },
     ],
