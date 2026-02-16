@@ -10,3 +10,5 @@ export const ROUTES = {
 };
 
 export const CONFIRM_EMAIL_LINK = window.location.origin + ROUTES.CONFIRM_EMAIL;
+
+export const AUTH_CALLBACK_LINK = window.location.origin + ROUTES.AUTH_CALLBACK;
