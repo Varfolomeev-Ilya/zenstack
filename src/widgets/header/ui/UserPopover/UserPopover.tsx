@@ -14,7 +14,7 @@ import { useTheme } from '@/shared/hooks/useTheme';
 import { Button } from '@/shared/ui/button';
 
 const UserPopover = () => {
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
 
   const navigate = useNavigate();
   const { showErrToast } = useErrToast();
@@ -64,7 +64,11 @@ const UserPopover = () => {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon" className="rounded-full">
-          <UserAvatar />
+          <UserAvatar
+            firstName={user?.first_name}
+            lastName={user?.last_name}
+            avatarUrl={user?.avatar_url}
+          />
         </Button>
       </PopoverTrigger>
 

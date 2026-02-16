@@ -1,22 +1,18 @@
+import { FC } from 'react';
+
 import { getUserNameFirstSymbols } from '@/shared/lib/api/getUserNameFirstSymbols';
 
-const UserAvatar = () => {
-  // TODO: add real user values
-  const user = {
-    avatar_url: '',
-    first_name: 'Ilya',
-    last_name: 'Varfolomeev',
-  };
-
-  const userFirstSymbols = getUserNameFirstSymbols(user.first_name, user.last_name);
+interface IUserAvatarProps {
+  firstName?: string;
+  lastName?: string;
+  avatarUrl?: string;
+}
+const UserAvatar: FC<IUserAvatarProps> = ({ firstName, lastName, avatarUrl }) => {
+  const userFirstSymbols = getUserNameFirstSymbols(firstName, lastName);
 
   return (
     <div className="flex items-center justify-center size-9 rounded-full">
-      {user.avatar_url ? (
-        <img src={user?.avatar_url} alt="User avatar" />
-      ) : (
-        <span>{userFirstSymbols}</span>
-      )}
+      {avatarUrl ? <img src={avatarUrl} alt="User avatar" /> : <span>{userFirstSymbols}</span>}
     </div>
   );
 };
