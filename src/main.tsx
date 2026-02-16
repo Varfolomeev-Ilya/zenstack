@@ -1,12 +1,12 @@
 'use client';
 import { StrictMode, Suspense } from 'react';
 
+import { routes } from '@app/routes/routes';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 
-import { routes } from './routes/routes';
-import './lib/i18n/i18n';
-import './styles/index.css';
+import '@app/i18n/i18n';
+import '@app/styles/index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

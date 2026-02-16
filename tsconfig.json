@@ -10,14 +10,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@assets/*": ["./src/assets/*"],
+      "@features/*": ["./src/features/*"],
       "@pages/*": ["./src/pages/*"],
-      "@constants/*": ["./src/constants/*"],
-      "@api/*": ["./src/api/*"],
+      "@shared/*": ["./src/shared/*"],
       "@locales/*": ["./public/locales/*"]
     },
     "allowJs": true,
