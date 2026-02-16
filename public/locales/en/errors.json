@@ -9,5 +9,7 @@
   "PASSWORD_ONE_NUMBER": "Password must contain at least one number",
   "PASSWORD_LATIN_ONLY": "Password must contain only Latin letters",
   "PASSWORD_ONE_SYMBOL": "Password must contain at least one symbol",
-  "PASSWORD_DID_NOT_MATCH": "Passwords do not match"
+  "PASSWORD_DID_NOT_MATCH": "Passwords do not match",
+  "NO_DATA_RETURNED": "No data returned",
+  "UNKNOWN_ERROR": "Unknown Error"
 }

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { forgotPasswordSchema, TForgotPasswordFormValues } from './ForgotPassword.constants';
 
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
-import { resetPasswordForEmail } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/AppLink';
 import { Button } from '@/shared/ui/button';
@@ -31,7 +31,7 @@ const ForgotPassword = () => {
   const onSubmit: SubmitHandler<TForgotPasswordFormValues> = async data => {
     setIsLoading(true);
     try {
-      await resetPasswordForEmail(data.email, window.location.origin + ROUTES.UPDATE_PASSWORD);
+      await supabaseAuthClient.resetPasswordForEmail(data.email);
 
       setIsSent(true);
       localStorage.setItem('resetEmail', data.email);

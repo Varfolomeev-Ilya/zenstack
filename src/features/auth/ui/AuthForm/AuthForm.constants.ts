@@ -1,6 +1,6 @@
-import { AuthResponse } from '@supabase/supabase-js';
 import * as z from 'zod';
 
+import { TAuthResponse } from '@/features/auth/api/types';
 import { emailValidation } from '@/features/auth/lib/checkEmailValidity';
 import { passwordValidation } from '@/features/auth/lib/checkPasswordValidity';
 
@@ -9,7 +9,7 @@ interface IAuthFormProps {
   googleBtnTxt: string;
   submitBtnTxt: string;
   linksArr: { helperTxt: string; title: string; path: string }[];
-  authCallBack: (email: string, password: string) => Promise<AuthResponse>;
+  authCallBack: (email: string, password: string) => Promise<TAuthResponse>;
 }
 
 const authFormSchema = z.object({

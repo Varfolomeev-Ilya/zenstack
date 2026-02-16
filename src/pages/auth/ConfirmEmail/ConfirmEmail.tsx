@@ -6,13 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import ResendConfirmation from '../ResendConfirmation/ResendConfirmation';
 
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
-import { getSession } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
+import { useErrToast } from '@/shared/hooks/useErrToast';
 import { Button } from '@/shared/ui/button';
 
 const ConfirmEmail = () => {
   const { t } = useTranslation('auth');
+
+  const { showErrToast } = useErrToast();
 
   const [status, setStatus] = useState('processing');
   const navigate = useNavigate();
@@ -20,16 +23,9 @@ const ConfirmEmail = () => {
   useEffect(() => {
     const handleEmailConfirmation = async () => {
       try {
-        const {
-          data: { session },
-          error,
-        } = await getSession();
+        const response = await supabaseAuthClient.getSession();
 
-        if (error) {
-          throw error;
-        }
-
-        if (session) {
+        if (response.data.session) {
           setStatus('success');
           setTimeout(() => navigate(ROUTES.HOME), 2000);
         } else {
@@ -41,7 +37,7 @@ const ConfirmEmail = () => {
           }
         }
       } catch (error) {
-        console.error('Confirmation error:', error);
+        showErrToast(error);
         setStatus('error');
       }
     };

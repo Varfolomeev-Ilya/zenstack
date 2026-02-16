@@ -1,69 +1,53 @@
 import { supabase } from '@shared/api/supabase';
 
-import { CONFIRM_EMAIL_LINK } from '@/shared/constants';
+import { TAuthResponse, TOauthResponse, TUserResponse } from './types';
 
-const signInWithGoogle = async () => {
-  return supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: `${window.location.origin}/auth/callback` },
-  });
-};
+import { AUTH_CALLBACK_LINK, CONFIRM_EMAIL_LINK } from '@/shared/constants';
+import { handleSupabaseResponse } from '@/shared/lib/api/handleSupabaseResponse';
 
-const signUpWithEmail = async (email: string, password: string, redirectUrl: string) => {
-  return supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      emailRedirectTo: redirectUrl,
-      data: {
-        email_confirm: true,
-      },
-    },
-  });
-};
+export const supabaseAuthClient = {
+  signInWithEmail: (email: string, password: string) =>
+    handleSupabaseResponse<TAuthResponse>(supabase.auth.signInWithPassword({ email, password })),
 
-const signInWithEmail = async (email: string, password: string) => {
-  return supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-};
+  signInWithGoogle: () =>
+    handleSupabaseResponse<TOauthResponse>(
+      supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: AUTH_CALLBACK_LINK },
+      }),
+    ),
 
-const resendConfirmationEmail = async (email: string) => {
-  return supabase.auth.resend({
-    type: 'signup',
-    email: email,
-    options: {
-      emailRedirectTo: CONFIRM_EMAIL_LINK,
-    },
-  });
-};
+  signUpWithEmail: (email: string, password: string) =>
+    handleSupabaseResponse<TAuthResponse>(
+      supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: CONFIRM_EMAIL_LINK,
+          data: { email_confirm: true },
+        },
+      }),
+    ),
 
-const resetPasswordForEmail = async (email: string, redirectTo: string) => {
-  return supabase.auth.resetPasswordForEmail(email, {
-    redirectTo,
-  });
-};
+  resendConfirmationEmail: (email: string) =>
+    handleSupabaseResponse(
+      supabase.auth.resend({
+        type: 'signup',
+        email,
+        options: { emailRedirectTo: CONFIRM_EMAIL_LINK },
+      }),
+    ),
 
-const getUser = async () => {
-  return supabase.auth.getUser();
-};
+  resetPasswordForEmail: (email: string) =>
+    handleSupabaseResponse(
+      supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: AUTH_CALLBACK_LINK,
+      }),
+    ),
 
-const getSession = async () => {
-  return supabase.auth.getSession();
-};
+  getUser: () => handleSupabaseResponse<TUserResponse>(supabase.auth.getUser()),
 
-const signOut = async () => {
-  return supabase.auth.signOut();
-};
+  getSession: () => supabase.auth.getSession(),
 
-export {
-  signInWithGoogle,
-  signUpWithEmail,
-  signInWithEmail,
-  getUser,
-  getSession,
-  signOut,
-  resendConfirmationEmail,
-  resetPasswordForEmail,
+  signOut: () => supabase.auth.signOut(),
 };

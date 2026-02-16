@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail, KeySquare } from 'lucide-react';
@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { authFormSchema, IAuthFormProps, TAuthFormValues } from './AuthForm.constants';
 
-import { signInWithGoogle } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
+import { useErrToast } from '@/shared/hooks/useErrToast';
 import AppLink from '@/shared/ui/AppLink';
 import { Button } from '@/shared/ui/button';
 import FormInput from '@/shared/ui/FormInput';
@@ -23,6 +24,10 @@ const AuthForm: FC<IAuthFormProps> = ({
   authCallBack,
 }) => {
   const { t } = useTranslation('auth');
+  const { showErrToast } = useErrToast();
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { control, handleSubmit } = useForm<TAuthFormValues>({
     resolver: zodResolver(authFormSchema),
@@ -33,26 +38,29 @@ const AuthForm: FC<IAuthFormProps> = ({
     mode: 'onChange',
   });
 
-  const navigate = useNavigate();
-
   const onSubmit: SubmitHandler<TAuthFormValues> = async data => {
+    setIsLoading(true);
+
     try {
       const { email, password } = data;
       const response = await authCallBack(email, password);
 
-      if (response.data.session) {
+      if (response.session) {
         navigate(ROUTES.HOME);
       }
     } catch (error) {
-      console.log(error);
+      showErrToast(error);
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <>
       <h1 className="mb-5 text-h3 text-foreground">{title}</h1>
 
       <div className="flex flex-col w-full ">
-        <Button variant="outline" onClick={signInWithGoogle}>
+        <Button variant="outline" onClick={supabaseAuthClient.signInWithGoogle}>
           {googleBtnTxt}
         </Button>
       </div>
@@ -93,7 +101,7 @@ const AuthForm: FC<IAuthFormProps> = ({
           </div>
         ))}
 
-        <Button variant="secondary" type="submit">
+        <Button variant="secondary" type="submit" disabled={isLoading}>
           {submitBtnTxt}
         </Button>
       </form>
