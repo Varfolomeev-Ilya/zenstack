@@ -8,5 +8,6 @@
   "PASSWORD_ONE_CAPITAL": "Password must contain at least one capital letter",
   "PASSWORD_ONE_NUMBER": "Password must contain at least one number",
   "PASSWORD_LATIN_ONLY": "Password must contain only Latin letters",
-  "PASSWORD_ONE_SYMBOL": "Password must contain at least one symbol"
+  "PASSWORD_ONE_SYMBOL": "Password must contain at least one symbol",
+  "PASSWORD_DID_NOT_MATCH": "Passwords do not match"
 }

@@ -34,7 +34,7 @@ const FormInput = <T extends FieldValues>({
       name={name}
       control={control}
       render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-        <div className={cn('relative pb-4')}>
+        <div className="relative pb-4 w-full">
           <div
             className={cn(
               'relative w-full bg-background border border-border rounded-[10px] px-2 ',

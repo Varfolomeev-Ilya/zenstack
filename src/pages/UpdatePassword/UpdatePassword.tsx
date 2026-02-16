@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
+import { IUpdatePasswordValues, updatePasswordSchema } from './UpdatePassword.constants';
 
 import { supabase } from '@/api/supabase';
 import { Button } from '@/components/ui/button';
@@ -10,14 +13,17 @@ import { ROUTES } from '@/constants';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
-interface IUpdatePasswordForm {
-  password: string;
-  confirmPassword: string;
-}
 export default function UpdatePassword() {
   const { t } = useTranslation();
 
-  const { control, handleSubmit } = useForm<IUpdatePasswordForm>();
+  const { control, handleSubmit } = useForm<IUpdatePasswordValues>({
+    resolver: zodResolver(updatePasswordSchema),
+    defaultValues: {
+      password: '',
+      confirmPassword: '',
+    },
+    mode: 'onChange',
+  });
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +52,7 @@ export default function UpdatePassword() {
     return () => subscription?.unsubscribe();
   }, []);
 
-  const onSubmit: SubmitHandler<IUpdatePasswordForm> = async data => {
+  const onSubmit: SubmitHandler<IUpdatePasswordValues> = async data => {
     setIsLoading(true);
 
     try {
@@ -82,7 +88,7 @@ export default function UpdatePassword() {
 
             <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col items-start lg:grid grid-cols-[140px_1fr] gap-1 lg:items-center">
-                <span>{t('common:inputs.newPasswordInput.label')}</span>
+                <span className="p-0 lg:pb-4">{t('common:inputs.newPasswordInput.label')}</span>
                 <FormInput
                   required
                   type="password"
@@ -94,7 +100,7 @@ export default function UpdatePassword() {
               </div>
 
               <div className="flex flex-col items-start lg:grid grid-cols-[140px_1fr] gap-1 lg:items-center">
-                <span>{t('common:inputs.repeatPasswordInput.label')}</span>
+                <span className="p-0 lg:pb-4">{t('common:inputs.repeatPasswordInput.label')}</span>
                 <FormInput
                   required
                   type="password"
