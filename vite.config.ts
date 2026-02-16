@@ -8,14 +8,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      '@app': resolve(__dirname, 'src/app'),
       '@components': resolve(__dirname, 'src/components'),
-      '@hooks': resolve(__dirname, 'src/hooks'),
-      '@lib': resolve(__dirname, 'src/lib'),
-      '@utils': resolve(__dirname, 'src/utils'),
-      '@assets': resolve(__dirname, 'src/assets'),
+      '@features': resolve(__dirname, 'src/features'),
       '@pages': resolve(__dirname, 'src/pages'),
-      '@constants': resolve(__dirname, 'src/constants'),
-      '@api': resolve(__dirname, 'src/api'),
+      '@shared': resolve(__dirname, 'src/shared'),
       '@locales': resolve(__dirname, './public/locales'),
     },
   },
