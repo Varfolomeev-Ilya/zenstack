@@ -34,13 +34,13 @@ const FormInput = <T extends FieldValues>({
       name={name}
       control={control}
       render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-        <div
-          className={cn(
-            'relative flex flex-col w-full border border-border rounded-[10px] px-2 bg-background',
-            fieldState.error && 'border-destructive',
-          )}
-        >
-          <div className="relative w-full bg-background">
+        <div className={cn('relative pb-4')}>
+          <div
+            className={cn(
+              'relative w-full bg-background border border-border rounded-[10px] px-2 ',
+              fieldState.error && 'border-destructive',
+            )}
+          >
             {label && (
               <Label
                 htmlFor={name}
@@ -57,7 +57,7 @@ const FormInput = <T extends FieldValues>({
             )}
 
             {LeftIcon && (
-              <LeftIcon className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground mt-[1px] z-10" />
+              <LeftIcon className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground mt-[1px] z-10" />
             )}
 
             <Input
@@ -93,7 +93,7 @@ const FormInput = <T extends FieldValues>({
           </div>
 
           {fieldState.error && (
-            <p className="text-xs text-destructive mt-1" id={`${name}-error`}>
+            <p className="absolute -bottom-0 text-xs text-destructive mt-1" id={`${name}-error`}>
               {fieldState.error.message}
             </p>
           )}
