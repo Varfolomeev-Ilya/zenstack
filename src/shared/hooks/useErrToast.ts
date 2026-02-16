@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 
 import { AxiosError, CanceledError } from 'axios';
+import i18next from 'i18next';
 import { toast } from 'react-toastify';
 
 import { getAxiosErrObj } from '@/shared/lib/api/getAxiosErrObj';
-
-const UNKNOWN_ERROR = 'Unknown Error';
 
 interface IApiErrorResponse {
   error: {
@@ -38,7 +37,7 @@ export const useErrToast = () => {
 
       const { code, message, detail } = err.error;
       const errorParts = [message, detail].filter(Boolean);
-      const errorText = `${code}: ${errorParts.join(' - ') || UNKNOWN_ERROR}`;
+      const errorText = `${code}: ${errorParts.join(' - ') || i18next.t('errors:UNKNOWN_ERROR')}`;
 
       showDefaultErrToast(errorText);
     },
@@ -84,7 +83,7 @@ export const useErrToast = () => {
         return;
       }
 
-      showDefaultErrToast(UNKNOWN_ERROR);
+      showDefaultErrToast(i18next.t('errors:UNKNOWN_ERROR'));
     },
     [checkApiErr, showDefaultErrToast],
   );
