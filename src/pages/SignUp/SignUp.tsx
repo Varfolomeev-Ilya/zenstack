@@ -1,6 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail, KeySquare } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+
+import { loginFormSchema, TLoginFormValues } from '../Login/Login.constants';
 
 import { signUpWithEmail } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -9,16 +12,18 @@ import AppLink from '@/shared/AppLink';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
-interface ILoginForm {
-  email: string;
-  password: string;
-}
-
 const SignUp = () => {
   const { t } = useTranslation('auth');
-  const { control, handleSubmit } = useForm<ILoginForm>();
+  const { control, handleSubmit } = useForm<TLoginFormValues>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
 
-  const onSubmit: SubmitHandler<ILoginForm> = async data => {
+  const onSubmit: SubmitHandler<TLoginFormValues> = async data => {
     try {
       const { email, password } = data;
       localStorage.setItem('pendingEmail', email);
