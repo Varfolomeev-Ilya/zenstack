@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+
+import { forgotPasswordSchema, TForgotPasswordForm } from './ForgotPassword.constants';
 
 import { resetPasswordForEmail } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -12,14 +15,20 @@ import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
 const ForgotPassword = () => {
-  const { control, watch, handleSubmit } = useForm<{ email: string }>();
+  const { control, watch, handleSubmit } = useForm<TForgotPasswordForm>({
+    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: '',
+    },
+    mode: 'onChange',
+  });
 
   const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
-  const onSubmit: SubmitHandler<{ email: string }> = async data => {
+  const onSubmit: SubmitHandler<TForgotPasswordForm> = async data => {
     setIsLoading(true);
     try {
       await resetPasswordForEmail(data.email, window.location.origin + ROUTES.UPDATE_PASSWORD);
