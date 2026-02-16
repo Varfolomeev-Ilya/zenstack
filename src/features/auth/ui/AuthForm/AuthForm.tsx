@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { authFormSchema, IAuthFormProps, TAuthFormValues } from './AuthForm.constants';
 
-import { signInWithGoogle } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
+import { useErrToast } from '@/shared/hooks/useErrToast';
 import AppLink from '@/shared/ui/AppLink';
 import { Button } from '@/shared/ui/button';
 import FormInput from '@/shared/ui/FormInput';
@@ -23,6 +24,8 @@ const AuthForm: FC<IAuthFormProps> = ({
   authCallBack,
 }) => {
   const { t } = useTranslation('auth');
+
+  const { showErrToast } = useErrToast();
 
   const { control, handleSubmit } = useForm<TAuthFormValues>({
     resolver: zodResolver(authFormSchema),
@@ -40,19 +43,20 @@ const AuthForm: FC<IAuthFormProps> = ({
       const { email, password } = data;
       const response = await authCallBack(email, password);
 
-      if (response.data.session) {
+      if (response.session) {
         navigate(ROUTES.HOME);
       }
     } catch (error) {
-      console.log(error);
+      showErrToast(error);
     }
   };
+
   return (
     <>
       <h1 className="mb-5 text-h3 text-foreground">{title}</h1>
 
       <div className="flex flex-col w-full ">
-        <Button variant="outline" onClick={signInWithGoogle}>
+        <Button variant="outline" onClick={supabaseAuthClient.signInWithGoogle}>
           {googleBtnTxt}
         </Button>
       </div>

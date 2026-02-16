@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
-import { resendConfirmationEmail } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { Button } from '@/shared/ui/button';
 
 const LinkExpired = () => {
@@ -10,7 +10,7 @@ const LinkExpired = () => {
     const email = localStorage.getItem('pendingEmail');
 
     if (email) {
-      await resendConfirmationEmail(email);
+      await supabaseAuthClient.resendConfirmationEmail(email);
     }
   };
 

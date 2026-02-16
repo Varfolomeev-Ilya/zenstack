@@ -10,7 +10,7 @@ import {
   TResendConfirmationFormValues,
 } from './ResendConfirmation.constants';
 
-import { resendConfirmationEmail } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { Button } from '@/shared/ui/button';
 import FormInput from '@/shared/ui/FormInput';
 
@@ -37,7 +37,7 @@ const ResendConfirmation = () => {
         return;
       }
 
-      await resendConfirmationEmail(savedEmail);
+      await supabaseAuthClient.resendConfirmationEmail(savedEmail);
 
       setIsSent(true);
       localStorage.setItem('pendingEmail', savedEmail);

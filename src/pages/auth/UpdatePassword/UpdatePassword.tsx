@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { IUpdatePasswordValues, updatePasswordSchema } from './UpdatePassword.constants';
 
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
 import { Button } from '@/shared/ui/button';
@@ -31,9 +32,7 @@ export default function UpdatePassword() {
 
   useEffect(() => {
     const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      const session = await supabaseAuthClient.getSession();
       if (!session) {
         navigate(ROUTES.FORGOT_PASSWORD);
       }
