@@ -1,8 +1,14 @@
 import { useState } from 'react';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+
+import {
+  resendConfirmationSchema,
+  TResendConfirmationFormValues,
+} from './ResendConfirmation.constants';
 
 import { resendConfirmationEmail } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -14,9 +20,15 @@ const ResendConfirmation = () => {
   const [loading, setLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
-  const { control, handleSubmit } = useForm<{ email: string }>();
+  const { control, handleSubmit } = useForm<TResendConfirmationFormValues>({
+    resolver: zodResolver(resendConfirmationSchema),
+    defaultValues: {
+      email: '',
+    },
+    mode: 'onChange',
+  });
 
-  const onSubmit: SubmitHandler<{ email: string }> = async (data: { email: string }) => {
+  const onSubmit: SubmitHandler<TResendConfirmationFormValues> = async data => {
     setLoading(true);
     try {
       const savedEmail = localStorage.getItem('pendingEmail') || data.email;
