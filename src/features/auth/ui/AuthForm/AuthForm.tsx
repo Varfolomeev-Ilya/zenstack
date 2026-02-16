@@ -9,13 +9,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { authFormSchema, IAuthFormProps, TAuthFormValues } from './AuthForm.constants';
 
-import { signInWithEmail, signInWithGoogle } from '@/features/auth/api/authApi';
+import { signInWithGoogle } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/AppLink';
 import { Button } from '@/shared/ui/button';
 import FormInput from '@/shared/ui/FormInput';
 
-const AuthForm: FC<IAuthFormProps> = ({ title, googleBtnTxt, submitBtnTxt, linksArr }) => {
+const AuthForm: FC<IAuthFormProps> = ({
+  title,
+  googleBtnTxt,
+  submitBtnTxt,
+  linksArr,
+  authCallBack,
+}) => {
   const { t } = useTranslation('auth');
 
   const { control, handleSubmit } = useForm<TAuthFormValues>({
@@ -32,7 +38,7 @@ const AuthForm: FC<IAuthFormProps> = ({ title, googleBtnTxt, submitBtnTxt, links
   const onSubmit: SubmitHandler<TAuthFormValues> = async data => {
     try {
       const { email, password } = data;
-      const response = await signInWithEmail(email, password);
+      const response = await authCallBack(email, password);
 
       if (response.data.session) {
         navigate(ROUTES.HOME);

@@ -2,6 +2,7 @@
 import { useTranslation } from 'react-i18next';
 
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import { signInWithEmail } from '@/features/auth/api/authApi';
 import AuthForm from '@/features/auth/ui/AuthForm/AuthForm';
 import { ROUTES } from '@/shared/constants';
 
@@ -28,6 +29,7 @@ const Login = () => {
         googleBtnTxt={t('login.loginWithGoogle')}
         submitBtnTxt={t('login.loginBtn')}
         linksArr={links}
+        authCallBack={(email, password) => signInWithEmail(email, password)}
       />
     </AuthLayoutWrapper>
   );
