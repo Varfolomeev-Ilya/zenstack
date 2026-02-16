@@ -23,11 +23,11 @@ const AuthForm: FC<IAuthFormProps> = ({
   linksArr,
   authCallBack,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const { t } = useTranslation('auth');
-
   const { showErrToast } = useErrToast();
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { control, handleSubmit } = useForm<TAuthFormValues>({
     resolver: zodResolver(authFormSchema),
@@ -37,8 +37,6 @@ const AuthForm: FC<IAuthFormProps> = ({
     },
     mode: 'onChange',
   });
-
-  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<TAuthFormValues> = async data => {
     setIsLoading(true);

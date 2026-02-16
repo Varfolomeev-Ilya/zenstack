@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { supabaseAuthClient } from '@features/auth/api/authApi';
 import { Popover, PopoverContent, PopoverTrigger } from '@shared/ui/popover';
 import { LogOut, Moon, Settings, Sun, UserPen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -8,12 +7,15 @@ import { useNavigate } from 'react-router-dom';
 
 import UserAvatar from './UserAvatar';
 
+import { useAuthStore } from '@/features/auth/model/auth.store';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import { useTheme } from '@/shared/hooks/useTheme';
 import { Button } from '@/shared/ui/button';
 
 const UserPopover = () => {
+  const { logout } = useAuthStore();
+
   const navigate = useNavigate();
   const { showErrToast } = useErrToast();
   const { theme, toggleTheme } = useTheme();
@@ -25,13 +27,12 @@ const UserPopover = () => {
 
   const handleLogout = useCallback(async () => {
     try {
-      await supabaseAuthClient.signOut();
-      localStorage.clear();
+      await logout();
       navigate(ROUTES.LOGIN);
     } catch (err) {
       showErrToast(err);
     }
-  }, [showErrToast, navigate]);
+  }, [showErrToast, navigate, logout]);
 
   const popoverActions = useMemo(
     () => [

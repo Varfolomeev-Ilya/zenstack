@@ -1,6 +1,6 @@
-import { TAuthResponse } from '@features/auth/model/types';
 import * as z from 'zod';
 
+import { TAuthResponse } from '@/features/auth/api/types';
 import { emailValidation } from '@/features/auth/lib/checkEmailValidity';
 import { passwordValidation } from '@/features/auth/lib/checkPasswordValidity';
 

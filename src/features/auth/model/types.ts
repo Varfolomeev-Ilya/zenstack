@@ -1,12 +1,13 @@
-import { AuthResponse, OAuthResponse, UserResponse } from '@supabase/supabase-js';
+import { User } from '@supabase/supabase-js';
 
-export type TAuthResponse = AuthResponse['data'];
-export type TOauthResponse = OAuthResponse['data'];
-export type TUserResponse = UserResponse['data'];
-export interface IApiErrorResponse {
-  error: {
-    message?: string;
-    code: number;
-    detail?: string;
-  };
+// TODO:Add user types
+export interface IAuthState {
+  user: User | null;
 }
+
+export interface IAuthActions {
+  setUser: (user: User | null) => void;
+  logout: () => Promise<void>;
+}
+
+export type TAuthStore = IAuthState & IAuthActions;
