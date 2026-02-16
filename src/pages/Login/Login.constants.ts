@@ -8,4 +8,4 @@ export const loginFormSchema = z.object({
   password: passwordValidation,
 });
 
-export type TLoginFormInputs = z.infer<typeof loginFormSchema>;
+export type TLoginFormValues = z.infer<typeof loginFormSchema>;

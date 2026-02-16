@@ -6,4 +6,4 @@ export const forgotPasswordSchema = z.object({
   email: emailValidation,
 });
 
-export type TForgotPasswordForm = z.infer<typeof forgotPasswordSchema>;
+export type TForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { loginFormSchema, TLoginFormInputs } from './Login.constants';
+import { loginFormSchema, TLoginFormValues } from './Login.constants';
 
 import { signInWithEmail, signInWithGoogle } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ import FormInput from '@/shared/FormInput';
 const Login = () => {
   const { t } = useTranslation('auth');
 
-  const { control, handleSubmit } = useForm<TLoginFormInputs>({
+  const { control, handleSubmit } = useForm<TLoginFormValues>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email: '',
@@ -28,7 +28,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<TLoginFormInputs> = async data => {
+  const onSubmit: SubmitHandler<TLoginFormValues> = async data => {
     try {
       const { email, password } = data;
       const response = await signInWithEmail(email, password);
