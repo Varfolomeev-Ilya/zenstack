@@ -1,8 +1,11 @@
 'use client';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail, KeySquare } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
+import { loginFormSchema, TLoginFormInputs } from './Login.constants';
 
 import { signInWithEmail, signInWithGoogle } from '@/api/auth';
 import { Button } from '@/components/ui/button';
@@ -11,18 +14,21 @@ import AppLink from '@/shared/AppLink';
 import AuthLayoutWrapper from '@/shared/AuthLayoutWrapper';
 import FormInput from '@/shared/FormInput';
 
-interface ILoginForm {
-  email: string;
-  password: string;
-}
-
 const Login = () => {
   const { t } = useTranslation('auth');
-  const { control, handleSubmit } = useForm<ILoginForm>();
+
+  const { control, handleSubmit } = useForm<TLoginFormInputs>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<ILoginForm> = async data => {
+  const onSubmit: SubmitHandler<TLoginFormInputs> = async data => {
     try {
       const { email, password } = data;
       const response = await signInWithEmail(email, password);
@@ -52,23 +58,25 @@ const Login = () => {
           <hr className="flex-1 border-border" />
         </div>
 
-        <form className="flex flex-col w-full gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <FormInput
-            name="email"
-            control={control}
-            label={t('common:inputs.emailInput.label')}
-            placeholder={t('common:inputs.emailInput.placeholder')}
-            LeftIcon={Mail}
-            type="email"
-          />
-          <FormInput
-            name="password"
-            control={control}
-            label={t('common:inputs.passwordInput.label')}
-            placeholder={t('common:inputs.passwordInput.placeholder')}
-            LeftIcon={KeySquare}
-            type="password"
-          />
+        <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-col gap-2">
+            <FormInput
+              name="email"
+              control={control}
+              label={t('common:inputs.emailInput.label')}
+              placeholder={t('common:inputs.emailInput.placeholder')}
+              LeftIcon={Mail}
+              type="email"
+            />
+            <FormInput
+              name="password"
+              control={control}
+              label={t('common:inputs.passwordInput.label')}
+              placeholder={t('common:inputs.passwordInput.placeholder')}
+              LeftIcon={KeySquare}
+              type="password"
+            />
+          </div>
 
           <div className="flex items-center justify-between text-muted-foreground text-sm">
             <p>{t('login.noAccountYet')}</p>
