@@ -9,7 +9,7 @@ import { supabase } from '@/shared/api/supabase';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { setUser, user } = useAuthStore();
+  const { setUserId, userId } = useAuthStore();
   const { showErrToast } = useErrToast();
 
   useEffect(() => {
@@ -18,10 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         const {
           data: { session },
         } = await supabase.auth.getSession();
-        setUser(session?.user ?? null);
+        setUserId(session?.user.id);
       } catch (error) {
         showErrToast(error);
-        setUser(null);
       }
     };
 
@@ -30,18 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
+      setUserId(session?.user.id);
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [setUser, showErrToast]);
+  }, []);
 
   return (
     <div className="w-full min-h-full">
       <Toast />
-      {user && <Header />}
+      {userId && <Header />}
       <main className=" px-4 py-8 bg-background text-foreground">{children}</main>
     </div>
   );
