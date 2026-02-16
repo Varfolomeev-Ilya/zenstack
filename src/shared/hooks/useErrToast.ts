@@ -4,15 +4,8 @@ import { AxiosError, CanceledError } from 'axios';
 import i18next from 'i18next';
 import { toast } from 'react-toastify';
 
+import { IApiErrorResponse } from '@/features/auth/model/types';
 import { getAxiosErrObj } from '@/shared/lib/api/getAxiosErrObj';
-
-interface IApiErrorResponse {
-  error: {
-    message?: string;
-    code: number;
-    detail?: string;
-  };
-}
 
 const isApiErrorResponse = (err: unknown): err is IApiErrorResponse => {
   return (
