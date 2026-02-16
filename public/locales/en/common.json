@@ -17,5 +17,12 @@
       "label": "Repeat password",
       "placeholder": "Repeat password again"
     }
+  },
+  "links": {
+    "profile": "Profile",
+    "theme": "Theme",
+    "settings": "Settings",
+    "language": "Language",
+    "logout": "Logout"
   }
 }
