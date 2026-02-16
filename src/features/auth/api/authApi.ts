@@ -1,6 +1,6 @@
 import { supabase } from '@shared/api/supabase';
 
-import { TAuthResponse, TOauthResponse, TUserResponse } from '../model/types';
+import { TAuthResponse, TOauthResponse, TUserResponse } from './types';
 
 import { AUTH_CALLBACK_LINK, CONFIRM_EMAIL_LINK } from '@/shared/constants';
 import { handleSupabaseResponse } from '@/shared/lib/api/handleSupabaseResponse';
