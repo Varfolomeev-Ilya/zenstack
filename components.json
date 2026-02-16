@@ -14,7 +14,7 @@
   "rtl": false,
   "aliases": {
     "components": "@/components",
-    "utils": "@/shared/lib/helpers",
+    "utils": "@/shared/lib/helpers/cn.ts",
     "ui": "@/shared/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
