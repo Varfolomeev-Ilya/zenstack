@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail, KeySquare } from 'lucide-react';
@@ -23,6 +23,8 @@ const AuthForm: FC<IAuthFormProps> = ({
   linksArr,
   authCallBack,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { t } = useTranslation('auth');
 
   const { showErrToast } = useErrToast();
@@ -39,6 +41,8 @@ const AuthForm: FC<IAuthFormProps> = ({
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<TAuthFormValues> = async data => {
+    setIsLoading(true);
+
     try {
       const { email, password } = data;
       const response = await authCallBack(email, password);
@@ -48,6 +52,8 @@ const AuthForm: FC<IAuthFormProps> = ({
       }
     } catch (error) {
       showErrToast(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -97,7 +103,7 @@ const AuthForm: FC<IAuthFormProps> = ({
           </div>
         ))}
 
-        <Button variant="secondary" type="submit">
+        <Button variant="secondary" type="submit" disabled={isLoading}>
           {submitBtnTxt}
         </Button>
       </form>
