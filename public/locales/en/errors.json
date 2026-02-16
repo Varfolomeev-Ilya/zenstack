@@ -1,0 +1,12 @@
+{
+  "REQUIRED_ERROR_MESSAGE": "This field is required",
+  "INCORRECT_EMAIL": "Incorrect Email",
+  "EMAIL_MIN_LENGTH": "Email must contain at least 5 characters",
+  "EMAIL_MAX_LENGTH": "Email must contain at most 50 characters",
+  "PASSWORD_MIN_LENGTH": "Password must contain at least 8 characters",
+  "PASSWORD_MAX_LENGTH": "Password must contain at most 30 characters",
+  "PASSWORD_ONE_CAPITAL": "Password must contain at least one capital letter",
+  "PASSWORD_ONE_NUMBER": "Password must contain at least one number",
+  "PASSWORD_LATIN_ONLY": "Password must contain only Latin letters",
+  "PASSWORD_ONE_SYMBOL": "Password must contain at least one symbol"
+}
