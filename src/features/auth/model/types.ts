@@ -1,12 +1,13 @@
-import { User } from '@supabase/supabase-js';
+import { IUserProfile } from '@/features/user/api/types';
 
-// TODO:Add user types
 export interface IAuthState {
-  user: User | null;
+  user: IUserProfile | null;
+  userId?: string | null;
 }
 
 export interface IAuthActions {
-  setUser: (user: User | null) => void;
+  setUserId: (userId?: string | null) => void;
+  setUser: (user: IUserProfile | null) => void;
   logout: () => Promise<void>;
 }
 

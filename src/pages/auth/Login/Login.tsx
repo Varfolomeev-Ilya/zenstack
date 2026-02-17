@@ -1,9 +1,9 @@
 'use client';
 import { useTranslation } from 'react-i18next';
 
-import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
-import AuthForm from '@/features/auth/ui/AuthForm/AuthForm';
+import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
+import AuthForm from '@/features/auth/ui/auth-form/auth-form';
 import { ROUTES } from '@/shared/constants';
 
 const Login = () => {
@@ -23,7 +23,7 @@ const Login = () => {
   ];
 
   return (
-    <AuthLayoutWrapper>
+    <AuthLayout>
       <AuthForm
         title={t('login.title')}
         googleBtnTxt={t('login.loginWithGoogle')}
@@ -31,7 +31,7 @@ const Login = () => {
         linksArr={links}
         authCallBack={(email, password) => supabaseAuthClient.signInWithEmail(email, password)}
       />
-    </AuthLayoutWrapper>
+    </AuthLayout>
   );
 };
 

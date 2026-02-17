@@ -1,0 +1,112 @@
+'use client';
+import { FC, useState } from 'react';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Mail, KeySquare } from 'lucide-react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { authFormSchema, IAuthFormProps, TAuthFormValues } from './auth-form.constants';
+
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
+import { ROUTES } from '@/shared/constants';
+import { useErrToast } from '@/shared/hooks/useErrToast';
+import AppLink from '@/shared/ui/app-link/app-link';
+import { Button } from '@/shared/ui/button/button';
+import FormInput from '@/shared/ui/form-input/form-input';
+
+const AuthForm: FC<IAuthFormProps> = ({
+  title,
+  googleBtnTxt,
+  submitBtnTxt,
+  linksArr,
+  authCallBack,
+}) => {
+  const { t } = useTranslation('auth');
+  const { showErrToast } = useErrToast();
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { control, handleSubmit } = useForm<TAuthFormValues>({
+    resolver: zodResolver(authFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
+
+  const onSubmit: SubmitHandler<TAuthFormValues> = async data => {
+    setIsLoading(true);
+
+    try {
+      const { email, password } = data;
+      const response = await authCallBack(email, password);
+
+      if (response.session) {
+        navigate(ROUTES.HOME);
+      }
+    } catch (error) {
+      showErrToast(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <h1 className="mb-5 text-h3 text-foreground">{title}</h1>
+
+      <div className="flex flex-col w-full ">
+        <Button variant="outline" onClick={supabaseAuthClient.signInWithGoogle}>
+          {googleBtnTxt}
+        </Button>
+      </div>
+
+      <div className="flex w-full items-center">
+        <hr className="flex-1 border-border" />
+        <span className="px-4 text-muted-foreground text-sm">{t('common:span')}</span>
+        <hr className="flex-1 border-border" />
+      </div>
+
+      <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-2">
+          <FormInput
+            name="email"
+            control={control}
+            label={t('common:inputs.emailInput.label')}
+            placeholder={t('common:inputs.emailInput.placeholder')}
+            LeftIcon={Mail}
+            type="email"
+          />
+          <FormInput
+            name="password"
+            control={control}
+            label={t('common:inputs.passwordInput.label')}
+            placeholder={t('common:inputs.passwordInput.placeholder')}
+            LeftIcon={KeySquare}
+            type="password"
+          />
+        </div>
+
+        {linksArr.map(({ helperTxt, title, path }, idx) => (
+          <div
+            key={idx}
+            className="flex items-center justify-between text-muted-foreground text-sm"
+          >
+            <p>{helperTxt}</p>
+            <AppLink title={title} path={path} />
+          </div>
+        ))}
+
+        <Button variant="secondary" type="submit" disabled={isLoading}>
+          {submitBtnTxt}
+        </Button>
+      </form>
+    </>
+  );
+};
+
+export default AuthForm;
