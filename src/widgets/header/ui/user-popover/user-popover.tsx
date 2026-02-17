@@ -13,7 +13,7 @@ import { cn } from '@/shared/lib/helpers/cn';
 import { Button } from '@/shared/ui/button/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover/popover';
 import { Separator } from '@/shared/ui/separator/separator';
-import { Skeleton } from '@/shared/ui/skeleton';
+import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 import UserCard from '@/shared/ui/UserCard';
 
 const UserPopover = () => {
