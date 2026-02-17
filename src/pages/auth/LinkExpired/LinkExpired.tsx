@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import { Button } from '@/shared/ui/button/button';
@@ -31,7 +31,7 @@ const LinkExpired = () => {
   };
 
   return (
-    <AuthLayoutWrapper>
+    <AuthLayout>
       <div className="flex flex-col justify-center gap-3">
         <h1 className="text-h3">{t('linkExpired.title')}</h1>
         <p className="text-normal text-muted-foreground">{t('linkExpired.subtitle')}</p>
@@ -44,7 +44,7 @@ const LinkExpired = () => {
           {t('linkExpired.resendBtn')}
         </Button>
       </div>
-    </AuthLayoutWrapper>
+    </AuthLayout>
   );
 };
 

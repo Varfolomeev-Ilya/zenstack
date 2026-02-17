@@ -2,11 +2,9 @@ import { FC } from 'react';
 
 import AuthIllustrationSrc from '@shared/assets/auth-illustration.png';
 
-interface IAuthLayoutWrapperProps {
-  children: React.ReactNode;
-}
+import { IAuthLayoutProps } from './auth-layout.types';
 
-const AuthLayoutWrapper: FC<IAuthLayoutWrapperProps> = ({ children }) => {
+const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
   return (
     <div className="w-full h-full flex flex-col gap-10 items-center lg:flex-row bg-background">
       <div className="flex flex-col items-center justify-center w-full relative max-w-[40%]">
@@ -21,4 +19,4 @@ const AuthLayoutWrapper: FC<IAuthLayoutWrapperProps> = ({ children }) => {
   );
 };
 
-export default AuthLayoutWrapper;
+export default AuthLayout;

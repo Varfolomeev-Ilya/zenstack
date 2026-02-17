@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { forgotPasswordSchema, TForgotPasswordFormValues } from './ForgotPassword.constants';
 
-import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/app-link/app-link';
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
   const email = watch('email');
 
   return (
-    <AuthLayoutWrapper>
+    <AuthLayout>
       <div className="flex flex-col gap-2">
         {isSent ? (
           <>
@@ -89,7 +89,7 @@ const ForgotPassword = () => {
           </>
         )}
       </div>
-    </AuthLayoutWrapper>
+    </AuthLayout>
   );
 };
 

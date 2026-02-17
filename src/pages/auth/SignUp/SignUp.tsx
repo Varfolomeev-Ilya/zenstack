@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import AuthForm from '@/features/auth/ui/AuthForm/AuthForm';
 import { ROUTES } from '@/shared/constants';
@@ -17,7 +17,7 @@ const SignUp = () => {
   ];
 
   return (
-    <AuthLayoutWrapper>
+    <AuthLayout>
       <AuthForm
         title={t('signUp.title')}
         googleBtnTxt={t('signUp.signUpWithGoogle')}
@@ -25,7 +25,7 @@ const SignUp = () => {
         linksArr={links}
         authCallBack={(email, password) => supabaseAuthClient.signUpWithEmail(email, password)}
       />
-    </AuthLayoutWrapper>
+    </AuthLayout>
   );
 };
 

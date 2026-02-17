@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { IUpdatePasswordValues, updatePasswordSchema } from './UpdatePassword.constants';
 
-import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
+import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
@@ -70,7 +70,7 @@ export default function UpdatePassword() {
     }
   };
   return (
-    <AuthLayoutWrapper>
+    <AuthLayout>
       <div className="auth-container">
         {isSuccess ? (
           <>
@@ -125,6 +125,6 @@ export default function UpdatePassword() {
           </>
         )}
       </div>
-    </AuthLayoutWrapper>
+    </AuthLayout>
   );
 }
