@@ -7,7 +7,7 @@ import { IFormInputProps } from '.';
 
 import { cn } from '@/shared/lib/helpers/cn';
 import { Input } from '@/shared/ui/input/input';
-import { Label } from '@/shared/ui/label';
+import { Label } from '@/shared/ui/label/label';
 
 const FormInput = <T extends FieldValues>({
   name,
