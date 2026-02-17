@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { forgotPasswordSchema, TForgotPasswordFormValues } from './ForgotPassword.constants';
 
-import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
+import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/app-link/app-link';

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ResendConfirmation from '../ResendConfirmation/ResendConfirmation';
 
-import AuthLayout from '@/app/layouts/AuthLayoutWrapper/auth-layout';
+import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';

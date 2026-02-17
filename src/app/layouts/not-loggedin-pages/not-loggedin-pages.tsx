@@ -11,7 +11,7 @@ import { Spinner } from '@/shared/ui/spinner/spinner';
 import { AppSidebar } from '@/widgets/app-sidebar/app-sidebar';
 import Header from '@/widgets/Header/Header';
 
-const LoggedInPagesLayout = () => {
+const LoggedInPages = () => {
   const { setUserId, userId } = useAuthStore();
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const LoggedInPagesLayout = () => {
   );
 };
 
-export default LoggedInPagesLayout;
+export default LoggedInPages;

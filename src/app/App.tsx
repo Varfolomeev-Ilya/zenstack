@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import LoggedInPagesLayout from './layouts/LoggedInPagesLayout/LoggedInPagesLayout';
+import LoggedInPages from './layouts/not-loggedin-pages/not-loggedin-pages';
 import NotLoggedInPagesLayout from './layouts/NotLoggedInPagesLayout/NotLoggedInPagesLayout';
 
 import { useAuthStore } from '@/features/auth/model/auth.store';
@@ -49,11 +49,7 @@ function App() {
     <>
       <Toast />
       <main className="px-4 py-8 bg-background text-foreground">
-        {AUTH_ROUTES.includes(location.pathname) ? (
-          <NotLoggedInPagesLayout />
-        ) : (
-          <LoggedInPagesLayout />
-        )}
+        {AUTH_ROUTES.includes(location.pathname) ? <NotLoggedInPagesLayout /> : <LoggedInPages />}
       </main>
     </>
   );
