@@ -12,7 +12,7 @@ import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
 import { Button } from '@/shared/ui/button/button';
-import FormInput from '@/shared/ui/FormInput';
+import FormInput from '@/shared/ui/form-input/form-input';
 
 export default function UpdatePassword() {
   const { t } = useTranslation();

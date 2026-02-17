@@ -1,19 +1,13 @@
 import { useState } from 'react';
 
 import { Eye, EyeOff } from 'lucide-react';
-import { Control, Controller, FieldValues, Path } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
+
+import { IFormInputProps } from '.';
 
 import { cn } from '@/shared/lib/helpers/cn';
 import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
-
-interface IFormInputProps<T extends FieldValues> {
-  name: Path<T>;
-  control: Control<T>;
-  label?: string;
-  LeftIcon?: React.ElementType;
-  rightEl?: React.ReactNode;
-}
 
 const FormInput = <T extends FieldValues>({
   name,

@@ -14,7 +14,7 @@ import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import AppLink from '@/shared/ui/app-link/app-link';
 import { Button } from '@/shared/ui/button/button';
-import FormInput from '@/shared/ui/FormInput';
+import FormInput from '@/shared/ui/form-input/form-input';
 
 const AuthForm: FC<IAuthFormProps> = ({
   title,

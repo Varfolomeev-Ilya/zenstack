@@ -12,7 +12,7 @@ import {
 
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { Button } from '@/shared/ui/button/button';
-import FormInput from '@/shared/ui/FormInput';
+import FormInput from '@/shared/ui/form-input/form-input';
 
 const ResendConfirmation = () => {
   const { t } = useTranslation('auth');
