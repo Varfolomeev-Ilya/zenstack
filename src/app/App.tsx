@@ -42,13 +42,13 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner className="absolute top-1/2 left-1/2 size-10 text-primary" />;
   }
 
   return (
     <>
       <Toast />
-      <main className="px-4 py-8 bg-background text-foreground">
+      <main className="relative bg-background text-foreground">
         {AUTH_ROUTES.includes(location.pathname) ? <NotLoggedInPages /> : <LoggedInPages />}
       </main>
     </>
