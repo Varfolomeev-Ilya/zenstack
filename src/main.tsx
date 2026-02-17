@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router';
 
 import '@app/i18n/i18n';
 import '@app/styles/index.css';
-import { Spinner } from './shared/ui/spinner';
+import { Spinner } from './shared/ui/spinner/spinner';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

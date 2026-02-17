@@ -11,7 +11,7 @@ import { useAuthStore } from '@/features/auth/model/auth.store';
 import Toast from '@/features/auth/ui/Toast/Toast';
 import { supabase } from '@/shared/api/supabase';
 import { AUTH_ROUTES } from '@/shared/constants';
-import { Spinner } from '@/shared/ui/spinner';
+import { Spinner } from '@/shared/ui/spinner/spinner';
 
 function App() {
   const location = useLocation();

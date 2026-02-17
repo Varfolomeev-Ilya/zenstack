@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
-import { Spinner } from '@/shared/ui/spinner';
+import { Spinner } from '@/shared/ui/spinner/spinner';
 
 const NotLoggedInPagesLayout = () => {
   return (

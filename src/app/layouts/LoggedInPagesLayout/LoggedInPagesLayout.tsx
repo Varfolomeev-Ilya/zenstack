@@ -7,9 +7,9 @@ import { Outlet } from 'react-router-dom';
 import { useAuthStore } from '@/features/auth/model/auth.store';
 import { supabase } from '@/shared/api/supabase';
 import { SidebarProvider, SidebarTrigger } from '@/shared/ui/sidebar';
-import { Spinner } from '@/shared/ui/spinner';
+import { Spinner } from '@/shared/ui/spinner/spinner';
+import { AppSidebar } from '@/widgets/app-sidebar/app-sidebar';
 import Header from '@/widgets/Header/Header';
-import { AppSidebar } from '@/widgets/Sidebar/AppSidebar';
 
 const LoggedInPagesLayout = () => {
   const { setUserId, userId } = useAuthStore();
@@ -28,14 +28,18 @@ const LoggedInPagesLayout = () => {
 
   return (
     <>
-      {userId && <Header />}
-
       <SidebarProvider>
         <AppSidebar />
         <SidebarTrigger />
-        <Suspense fallback={<Spinner className="absolute top-1/2 left-1/2 size-10 text-primary" />}>
-          <Outlet />
-        </Suspense>
+        <div className="relative flex h-full flex-1 flex-col">
+          {userId && <Header />}
+
+          <Suspense
+            fallback={<Spinner className="absolute top-1/2 left-1/2 size-10 text-primary" />}
+          >
+            <Outlet />
+          </Suspense>
+        </div>
       </SidebarProvider>
     </>
   );
