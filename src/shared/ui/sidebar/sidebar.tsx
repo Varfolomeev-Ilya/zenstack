@@ -4,16 +4,27 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { PanelLeft } from 'lucide-react';
 
-import { SidebarContext, SidebarContextProps, useSidebar } from './useSidebar';
+import { SidebarContext, SidebarContextProps, useSidebar } from '../../hooks/useSidebar';
 
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/shared/lib/helpers/cn';
-import { Button } from '@/shared/ui/button';
-import { Input } from '@/shared/ui/input';
-import { Separator } from '@/shared/ui/separator';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/shared/ui/sheet';
-import { Skeleton } from '@/shared/ui/skeleton';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/shared/ui/tooltip';
+import { Button } from '@/shared/ui/button/button';
+import { Input } from '@/shared/ui/input/input';
+import { Separator } from '@/shared/ui/separator/separator';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from '@/shared/ui/sheet/sheet';
+import { Skeleton } from '@/shared/ui/skeleton/skeleton';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/shared/ui/tooltip/tooltip';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
