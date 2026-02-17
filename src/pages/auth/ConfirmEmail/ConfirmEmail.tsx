@@ -10,7 +10,7 @@ import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 
 const ConfirmEmail = () => {
   const { t } = useTranslation('auth');

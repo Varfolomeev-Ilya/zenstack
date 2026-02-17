@@ -11,7 +11,7 @@ import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/AppLink';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 import FormInput from '@/shared/ui/FormInput';
 
 const ForgotPassword = () => {

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { useErrToast } from '@/shared/hooks/useErrToast';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 
 const LinkExpired = () => {
   const { t } = useTranslation('auth');

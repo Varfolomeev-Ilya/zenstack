@@ -11,7 +11,7 @@ import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 import FormInput from '@/shared/ui/FormInput';
 
 export default function UpdatePassword() {

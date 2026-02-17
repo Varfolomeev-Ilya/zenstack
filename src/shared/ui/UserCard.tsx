@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import { cn } from '../lib/helpers/cn';
 
-import UserAvatar from '@/widgets/Header/ui/UserPopover/UserAvatar';
+import UserAvatar from '@/widgets/Header/ui/user-popover/UserAvatar';
 
 interface IUserCardProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   firstName?: string;

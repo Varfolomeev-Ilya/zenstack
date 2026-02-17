@@ -11,7 +11,7 @@ import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import { useTheme } from '@/shared/hooks/useTheme';
 import { cn } from '@/shared/lib/helpers/cn';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 import { Separator } from '@/shared/ui/separator';
 import { Skeleton } from '@/shared/ui/skeleton';
 import UserCard from '@/shared/ui/UserCard';

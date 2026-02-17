@@ -13,7 +13,7 @@ import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import AppLink from '@/shared/ui/AppLink';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/button/button';
 import FormInput from '@/shared/ui/FormInput';
 
 const AuthForm: FC<IAuthFormProps> = ({
