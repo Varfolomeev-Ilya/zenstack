@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 
 import { LogOut, Moon, Settings, Sun, UserPen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
+import UserAvatar from '../user-avatar/user-avatar';
 
 import { useAuthStore } from '@/features/auth/model/auth.store';
 import { supabaseUserClient } from '@/features/user/api/user-api';
@@ -87,21 +90,22 @@ const UserPopover = () => {
 
   if (isLoading) {
     // TODO: style skeleton
-    return <Skeleton />;
+    return <Skeleton className="size-8 rounded-full" />;
   }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <UserCard
-          firstName={user?.first_name}
-          lastName={user?.last_name}
-          avatarUrl={user?.avatar_url}
-          email={user?.email}
-        />
+      <PopoverTrigger>
+        <Button variant="ghost" size="icon" className="size-8 rounded-full">
+          <UserAvatar
+            firstName={user?.first_name}
+            lastName={user?.last_name}
+            avatarUrl={user?.avatar_url}
+          />
+        </Button>
       </PopoverTrigger>
 
-      <PopoverContent align="start" side="right" className="w-[240px] p-2 rounded-2xl">
+      <PopoverContent align="start" side="bottom" className="w-[240px] p-2 rounded-2xl">
         <UserCard
           firstName={user?.first_name}
           lastName={user?.last_name}
@@ -113,9 +117,8 @@ const UserPopover = () => {
         <Separator className="my-1" />
 
         {popoverActions.map((item, idx) => (
-          <>
+          <React.Fragment key={idx}>
             <Button
-              key={idx}
               variant="ghost"
               className={cn(
                 'w-full justify-start py-1 px-1.5',
@@ -131,7 +134,7 @@ const UserPopover = () => {
             </Button>
 
             {idx === popoverActions.length - 2 && <Separator className="my-1" />}
-          </>
+          </React.Fragment>
         ))}
       </PopoverContent>
     </Popover>

@@ -1,16 +1,13 @@
-import { Link } from 'react-router-dom';
-
-import { ROUTES } from '@/shared/constants';
+import UserPopover from '@/widgets/header/ui/user-popover/user-popover';
 
 const Header = () => {
   return (
     <header
       aria-label="header"
-      className="flex w-full items-center justify-between py-4 px-5 border-b border-border bg-background"
+      className="flex w-full items-center justify-between py-4 px-5 border-b border-border bg-background h-[61px]"
     >
-      <Link to={ROUTES.HOME}>
-        <p className="text-2xl font-bold text-foreground">ZenStack</p>
-      </Link>
+      <div></div>
+      <UserPopover />
     </header>
   );
 };

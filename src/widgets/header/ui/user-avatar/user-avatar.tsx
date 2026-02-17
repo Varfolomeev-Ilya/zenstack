@@ -8,7 +8,7 @@ const UserAvatar: FC<IUserAvatarProps> = ({ firstName, lastName, avatarUrl }) =>
   const userFirstSymbols = getUserNameFirstSymbols(firstName, lastName);
 
   return (
-    <div className="flex items-center justify-center size-9 rounded-full">
+    <div className="flex items-center justify-center size-[36px] rounded-full">
       {avatarUrl ? <img src={avatarUrl} alt="User avatar" /> : <span>{userFirstSymbols}</span>}
     </div>
   );
