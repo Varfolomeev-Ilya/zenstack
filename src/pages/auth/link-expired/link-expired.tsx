@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import { Button } from '@/shared/ui/button/button';
 

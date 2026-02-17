@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { supabaseAuthClient } from '../api/authApi';
+import { supabaseAuthClient } from '../api/auth-api';
 
 import { TAuthStore } from './types';
 

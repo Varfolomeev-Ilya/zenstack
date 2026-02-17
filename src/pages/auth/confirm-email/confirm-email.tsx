@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import ResendConfirmation from '../ResendConfirmation/ResendConfirmation';
+import ResendConfirmation from '../resend-confirmation/resend-confirmation';
 
 import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
 import { supabase } from '@/shared/api/supabase';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';

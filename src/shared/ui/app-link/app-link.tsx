@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { IAppLinkProps } from '.';
+import { IAppLinkProps } from './app-link.types';
 
 import { cn } from '@/shared/lib/helpers/cn';
 

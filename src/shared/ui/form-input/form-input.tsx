@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { Controller, FieldValues } from 'react-hook-form';
 
-import { IFormInputProps } from '.';
+import { IFormInputProps } from './types.ts';
 
 import { cn } from '@/shared/lib/helpers/cn';
 import { Input } from '@/shared/ui/input/input';

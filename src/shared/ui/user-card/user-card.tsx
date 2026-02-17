@@ -2,9 +2,9 @@ import { forwardRef } from 'react';
 
 import { cn } from '../../lib/helpers/cn';
 
-import { IUserCardProps } from '.';
+import { IUserCardProps } from './user-card.types';
 
-import UserAvatar from '@/widgets/Header/ui/user-avatar/user-avatar';
+import UserAvatar from '@/widgets/header/ui/user-avatar/user-avatar';
 
 // TODO: Add real values and separate types
 export const UserCard = forwardRef<HTMLDivElement, IUserCardProps>(

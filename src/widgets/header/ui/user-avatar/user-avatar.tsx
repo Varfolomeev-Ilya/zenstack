@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IUserAvatarProps } from '.';
+import { IUserAvatarProps } from './user-avatar.types';
 
 import { getUserNameFirstSymbols } from '@/shared/lib/api/getUserNameFirstSymbols';
 

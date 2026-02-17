@@ -5,10 +5,10 @@ import { Mail } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { forgotPasswordSchema, TForgotPasswordFormValues } from './ForgotPassword.constants';
+import { forgotPasswordSchema, TForgotPasswordFormValues } from './forgot-password.constants';
 
 import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
 import { ROUTES } from '@/shared/constants';
 import AppLink from '@/shared/ui/app-link/app-link';
 import { Button } from '@/shared/ui/button/button';

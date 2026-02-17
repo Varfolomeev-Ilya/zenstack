@@ -7,9 +7,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { authFormSchema, IAuthFormProps, TAuthFormValues } from './AuthForm.constants';
+import { authFormSchema, IAuthFormProps, TAuthFormValues } from './auth-form.constants';
 
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import AppLink from '@/shared/ui/app-link/app-link';

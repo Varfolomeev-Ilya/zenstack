@@ -9,7 +9,7 @@ import { supabase } from '@/shared/api/supabase';
 import { SidebarProvider, SidebarTrigger } from '@/shared/ui/sidebar/sidebar';
 import { Spinner } from '@/shared/ui/spinner/spinner';
 import { AppSidebar } from '@/widgets/app-sidebar/app-sidebar';
-import Header from '@/widgets/Header/Header';
+import Header from '@/widgets/header/header';
 
 const LoggedInPages = () => {
   const { setUserId, userId } = useAuthStore();

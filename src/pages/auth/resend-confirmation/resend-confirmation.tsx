@@ -8,9 +8,9 @@ import { useTranslation } from 'react-i18next';
 import {
   resendConfirmationSchema,
   TResendConfirmationFormValues,
-} from './ResendConfirmation.constants';
+} from './resend-confirmation.constants';
 
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
 import { Button } from '@/shared/ui/button/button';
 import FormInput from '@/shared/ui/form-input/form-input';
 

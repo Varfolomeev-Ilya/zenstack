@@ -5,15 +5,15 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import App from '../App';
 
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './private-route';
 
-const LoginPage = lazy(() => import('@/pages/auth/Login/Login'));
-const SignUpPage = lazy(() => import('@/pages/auth/SignUp/SignUp'));
-const AuthCallbackPage = lazy(() => import('@/pages/auth/AuthCallback/AuthCallback'));
-const ConfirmEmailPage = lazy(() => import('@/pages/auth/ConfirmEmail/ConfirmEmail'));
-const LinkExpiredPage = lazy(() => import('@/pages/auth/LinkExpired/LinkExpired'));
-const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPassword/ForgotPassword'));
-const UpdatePasswordPage = lazy(() => import('@/pages/auth/UpdatePassword/UpdatePassword'));
+const LoginPage = lazy(() => import('@/pages/auth/login/login'));
+const SignUpPage = lazy(() => import('@/pages/auth/sign-up/sign-up'));
+const AuthCallbackPage = lazy(() => import('@/pages/auth/auth-callback/auth-callback'));
+const ConfirmEmailPage = lazy(() => import('@/pages/auth/confirm-email/confirm-email'));
+const LinkExpiredPage = lazy(() => import('@/pages/auth/link-expired/link-expired'));
+const ForgotPasswordPage = lazy(() => import('@/pages/auth/forgot-password/forgot-password'));
+const UpdatePasswordPage = lazy(() => import('@/pages/auth/update-password/update-password'));
 
 export const routes = createBrowserRouter([
   {

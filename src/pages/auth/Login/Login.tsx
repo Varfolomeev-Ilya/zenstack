@@ -2,8 +2,8 @@
 import { useTranslation } from 'react-i18next';
 
 import AuthLayout from '@/app/layouts/auth-layout/auth-layout';
-import { supabaseAuthClient } from '@/features/auth/api/authApi';
-import AuthForm from '@/features/auth/ui/AuthForm/AuthForm';
+import { supabaseAuthClient } from '@/features/auth/api/auth-api';
+import AuthForm from '@/features/auth/ui/auth-form/auth-form';
 import { ROUTES } from '@/shared/constants';
 
 const Login = () => {
