@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import LoggedInPages from './layouts/not-loggedin-pages/not-loggedin-pages';
-import NotLoggedInPagesLayout from './layouts/NotLoggedInPagesLayout/NotLoggedInPagesLayout';
+import LoggedInPages from './layouts/logged-in-pages/logged-in-pages';
+import NotLoggedInPages from './layouts/not-logged-in-pages/not-logged-in-pages';
 
 import { useAuthStore } from '@/features/auth/model/auth.store';
 import Toast from '@/features/auth/ui/Toast/Toast';
@@ -49,7 +49,7 @@ function App() {
     <>
       <Toast />
       <main className="px-4 py-8 bg-background text-foreground">
-        {AUTH_ROUTES.includes(location.pathname) ? <NotLoggedInPagesLayout /> : <LoggedInPages />}
+        {AUTH_ROUTES.includes(location.pathname) ? <NotLoggedInPages /> : <LoggedInPages />}
       </main>
     </>
   );
