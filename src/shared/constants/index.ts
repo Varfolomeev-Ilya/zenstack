@@ -9,6 +9,16 @@ export const ROUTES = {
   UPDATE_PASSWORD: '/update-password',
 };
 
+export const AUTH_ROUTES = [
+  ROUTES.LOGIN,
+  ROUTES.SIGN_UP,
+  ROUTES.FORGOT_PASSWORD,
+  ROUTES.UPDATE_PASSWORD,
+  ROUTES.CONFIRM_EMAIL,
+  ROUTES.LINK_EXPIRED,
+  ROUTES.AUTH_CALLBACK,
+];
+
 export const CONFIRM_EMAIL_LINK = window.location.origin + ROUTES.CONFIRM_EMAIL;
 
 export const AUTH_CALLBACK_LINK = window.location.origin + ROUTES.AUTH_CALLBACK;
