@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Popover, PopoverContent, PopoverTrigger } from '@shared/ui/popover';
 import { LogOut, Moon, Settings, Sun, UserPen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +11,7 @@ import { useErrToast } from '@/shared/hooks/useErrToast';
 import { useTheme } from '@/shared/hooks/useTheme';
 import { cn } from '@/shared/lib/helpers/cn';
 import { Button } from '@/shared/ui/button/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover/popover';
 import { Separator } from '@/shared/ui/separator';
 import { Skeleton } from '@/shared/ui/skeleton';
 import UserCard from '@/shared/ui/UserCard';
