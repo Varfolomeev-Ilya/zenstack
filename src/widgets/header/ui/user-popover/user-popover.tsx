@@ -14,7 +14,7 @@ import { Button } from '@/shared/ui/button/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover/popover';
 import { Separator } from '@/shared/ui/separator/separator';
 import { Skeleton } from '@/shared/ui/skeleton/skeleton';
-import UserCard from '@/shared/ui/UserCard';
+import UserCard from '@/shared/ui/user-card/user-card';
 
 const UserPopover = () => {
   const { logout, setUser, user, userId } = useAuthStore();

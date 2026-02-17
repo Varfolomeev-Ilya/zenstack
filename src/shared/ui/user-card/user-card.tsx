@@ -1,16 +1,11 @@
 import { forwardRef } from 'react';
 
-import { cn } from '../lib/helpers/cn';
+import { cn } from '../../lib/helpers/cn';
 
-import UserAvatar from '@/widgets/Header/ui/user-popover/UserAvatar';
+import { IUserCardProps } from '.';
 
-interface IUserCardProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-  firstName?: string;
-  lastName?: string;
-  avatarUrl?: string;
-  email?: string;
-  size?: 'sm' | 'md';
-}
+import UserAvatar from '@/widgets/Header/ui/user-avatar/user-avatar';
+
 // TODO: Add real values and separate types
 export const UserCard = forwardRef<HTMLDivElement, IUserCardProps>(
   ({ firstName, lastName, avatarUrl, email, className, size, ...props }, ref) => {
