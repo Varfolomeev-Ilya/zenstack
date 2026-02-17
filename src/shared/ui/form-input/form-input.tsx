@@ -6,7 +6,7 @@ import { Controller, FieldValues } from 'react-hook-form';
 import { IFormInputProps } from '.';
 
 import { cn } from '@/shared/lib/helpers/cn';
-import { Input } from '@/shared/ui/input';
+import { Input } from '@/shared/ui/input/input';
 import { Label } from '@/shared/ui/label';
 
 const FormInput = <T extends FieldValues>({
