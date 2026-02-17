@@ -23,7 +23,7 @@ export const UserCard = forwardRef<HTMLDivElement, IUserCardProps>(
         {...props}
       >
         <UserAvatar firstName={firstName} lastName={lastName} avatarUrl={avatarUrl} />
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center items-start">
           <p>{showUserName}</p>
           <p>{email}</p>
         </div>
