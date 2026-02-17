@@ -2,13 +2,9 @@ import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { cn } from '@/shared/lib/helpers/cn';
+import { IAppLinkProps } from '.';
 
-interface IAppLinkProps {
-  title: string;
-  path: string;
-  className?: string;
-}
+import { cn } from '@/shared/lib/helpers/cn';
 
 const AppLink: FC<IAppLinkProps> = ({ title, path, className }) => {
   return (

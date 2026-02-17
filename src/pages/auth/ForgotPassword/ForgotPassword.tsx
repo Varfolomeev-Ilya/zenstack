@@ -10,7 +10,7 @@ import { forgotPasswordSchema, TForgotPasswordFormValues } from './ForgotPasswor
 import AuthLayoutWrapper from '@/app/layouts/AuthLayoutWrapper/AuthLayoutWrapper';
 import { supabaseAuthClient } from '@/features/auth/api/authApi';
 import { ROUTES } from '@/shared/constants';
-import AppLink from '@/shared/ui/AppLink';
+import AppLink from '@/shared/ui/app-link/app-link';
 import { Button } from '@/shared/ui/button/button';
 import FormInput from '@/shared/ui/FormInput';
 
