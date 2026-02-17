@@ -1,19 +1,61 @@
 'use client';
-import { Suspense } from 'react';
 
-import { Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import RootLayout from './layouts/RootLayout/RootLayout';
+import { useLocation } from 'react-router-dom';
 
+import LoggedInPagesLayout from './layouts/LoggedInPagesLayout/LoggedInPagesLayout';
+import NotLoggedInPagesLayout from './layouts/NotLoggedInPagesLayout/NotLoggedInPagesLayout';
+
+import { useAuthStore } from '@/features/auth/model/auth.store';
+import Toast from '@/features/auth/ui/Toast/Toast';
+import { supabase } from '@/shared/api/supabase';
+import { AUTH_ROUTES } from '@/shared/constants';
 import { Spinner } from '@/shared/ui/spinner';
 
 function App() {
+  const location = useLocation();
+  const { setUserId } = useAuthStore();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      setIsLoading(true);
+
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        setUserId(session?.user.id);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkToken();
+  }, []);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <RootLayout>
-      <Suspense fallback={<Spinner className="absolute top-1/2 left-1/2 size-10 text-primary" />}>
-        <Outlet />
-      </Suspense>
-    </RootLayout>
+    <>
+      <Toast />
+      <main className="px-4 py-8 bg-background text-foreground">
+        {AUTH_ROUTES.includes(location.pathname) ? (
+          <NotLoggedInPagesLayout />
+        ) : (
+          <LoggedInPagesLayout />
+        )}
+      </main>
+    </>
   );
 }
 

@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: ROUTES.HOME,
-        element: <PrivateRoute Component={() => <div>Home</div>} />,
+        element: <PrivateRoute Component={() => <div></div>} />,
       },
       {
         path: ROUTES.CONFIRM_EMAIL,
