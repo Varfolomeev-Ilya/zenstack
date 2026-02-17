@@ -1,4 +1,4 @@
-import { IUserProfile } from './types';
+import { IUserProfile } from './user-api.types';
 
 import { supabase } from '@/shared/api/supabase';
 

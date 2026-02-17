@@ -1,4 +1,4 @@
-import { IUserProfile } from '@/features/user/api/types';
+import { IUserProfile } from '@/features/user/api/user-api.types';
 
 export interface IAuthState {
   user: IUserProfile | null;
