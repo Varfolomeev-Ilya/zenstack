@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthStore } from '@/features/auth/model/auth.store';
-import { supabaseUserClient } from '@/features/user/api/userApi';
+import { supabaseUserClient } from '@/features/user/api/user-api';
 import { ROUTES } from '@/shared/constants';
 import { useErrToast } from '@/shared/hooks/useErrToast';
 import { useTheme } from '@/shared/hooks/useTheme';
