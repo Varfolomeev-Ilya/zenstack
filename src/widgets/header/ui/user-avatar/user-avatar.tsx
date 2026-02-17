@@ -1,12 +1,9 @@
 import { FC } from 'react';
 
+import { IUserAvatarProps } from '.';
+
 import { getUserNameFirstSymbols } from '@/shared/lib/api/getUserNameFirstSymbols';
 
-interface IUserAvatarProps {
-  firstName?: string;
-  lastName?: string;
-  avatarUrl?: string;
-}
 const UserAvatar: FC<IUserAvatarProps> = ({ firstName, lastName, avatarUrl }) => {
   const userFirstSymbols = getUserNameFirstSymbols(firstName, lastName);
 
