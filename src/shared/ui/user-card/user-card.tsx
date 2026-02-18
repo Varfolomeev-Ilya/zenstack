@@ -6,11 +6,8 @@ import { IUserCardProps } from './user-card.types';
 
 import UserAvatar from '@/widgets/header/ui/user-avatar/user-avatar';
 
-// TODO: Add real values and separate types
 export const UserCard = forwardRef<HTMLDivElement, IUserCardProps>(
   ({ firstName, lastName, avatarUrl, email, className, size, ...props }, ref) => {
-    const showUserName = 'Anonymous user';
-
     return (
       <div
         ref={ref}
@@ -23,8 +20,10 @@ export const UserCard = forwardRef<HTMLDivElement, IUserCardProps>(
         {...props}
       >
         <UserAvatar firstName={firstName} lastName={lastName} avatarUrl={avatarUrl} />
-        <div className="flex flex-col justify-center">
-          <p>{showUserName}</p>
+        <div className="flex flex-col justify-center items-start">
+          <p>
+            {firstName} {lastName}
+          </p>
           <p>{email}</p>
         </div>
       </div>
