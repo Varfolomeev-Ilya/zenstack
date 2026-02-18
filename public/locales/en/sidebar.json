@@ -1,0 +1,16 @@
+{
+  "buttons": {
+    "refresh": "Refresh",
+    "toggleSidebar": "Toggle sidebar",
+    "spaces": "Spaces",
+    "organization": "Organization",
+    "home": "Home",
+    "notifications": "Notifications",
+    "goals": "Goals",
+    "profile": "Profile",
+    "settings": "Settings",
+    "history": "History",
+    "invite": "Invite",
+    "newSpace": "New Space"
+  }
+}

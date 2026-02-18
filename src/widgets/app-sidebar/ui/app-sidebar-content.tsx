@@ -1,4 +1,7 @@
+import { useMemo } from 'react';
+
 import { Home, Bell, Trophy, ChevronDown, Plus, BadgePlus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/shared/ui/button/button';
 import {
@@ -19,37 +22,41 @@ import {
   SidebarMenuSubItem,
 } from '@/shared/ui/sidebar/sidebar';
 
-const sidebarContentLinks = [
-  {
-    name: 'Home',
-    url: '#',
-    icon: Home,
-  },
-  {
-    name: 'Notifications',
-    url: '#',
-    icon: Bell,
-  },
-  {
-    name: 'Goals',
-    url: '#',
-    icon: Trophy,
-  },
-];
-
 const AppSidebarContent = () => {
+  const { t } = useTranslation('sidebar');
+
+  const sidebarContentButtons = useMemo(
+    () => [
+      {
+        name: t('buttons.home'),
+        action: () => null,
+        icon: Home,
+      },
+      {
+        name: t('buttons.notifications'),
+        action: () => null,
+        icon: Bell,
+      },
+      {
+        name: t('buttons.goals'),
+        action: () => null,
+        icon: Trophy,
+      },
+    ],
+    [t],
+  );
   return (
     <SidebarContent>
       <Separator className="my-2" />
 
       <SidebarGroupContent className="px-2">
-        {sidebarContentLinks.map(project => (
-          <SidebarMenuItem key={project.name} className="list-none">
-            <SidebarMenuButton asChild tooltip={project.name}>
-              <a href={project.url}>
-                <project.icon />
-                <span>{project.name}</span>
-              </a>
+        {sidebarContentButtons.map((item, index) => (
+          <SidebarMenuItem key={item.name} className="list-none">
+            <SidebarMenuButton asChild tooltip={item.name}>
+              <Button key={index} variant="ghost" className="justify-start" onClick={item.action}>
+                <item.icon className="mr-2 h-4 w-4" />
+                {item.name}
+              </Button>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
@@ -60,9 +67,9 @@ const AppSidebarContent = () => {
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip="Spaces">
+                <SidebarMenuButton tooltip={t('buttons.spaces')}>
                   <BadgePlus />
-                  <span>Spaces</span>
+                  <span>{t('buttons.spaces')}</span>
                   <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -76,7 +83,7 @@ const AppSidebarContent = () => {
                         className="w-full justify-between"
                         onClick={() => null}
                       >
-                        <span>New space</span>
+                        <span>{t('buttons.newSpace')}</span>
                         <Plus className="h-4 w-4" />
                       </Button>
                     </SidebarMenuSubButton>

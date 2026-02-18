@@ -1,4 +1,5 @@
 import { Blocks } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import OrganizationPopover from './organization-popover/organization-popover';
 
@@ -11,6 +12,7 @@ import {
 } from '@/shared/ui/sidebar/sidebar';
 
 const AppSidebarFooter = () => {
+  const { t } = useTranslation('sidebar');
   const { state } = useSidebar();
   const isSidebarCollapsed = state === 'collapsed';
 
@@ -19,9 +21,12 @@ const AppSidebarFooter = () => {
       <SidebarMenu>
         <SidebarMenuItem>
           <OrganizationPopover>
-            <SidebarMenuButton tooltip="Organization" className="flex items-center gap-2">
+            <SidebarMenuButton
+              tooltip={t('buttons.organization')}
+              className="flex items-center gap-2"
+            >
               <Blocks />
-              {!isSidebarCollapsed && 'Organization'}
+              {!isSidebarCollapsed && t('buttons.organization')}
             </SidebarMenuButton>
           </OrganizationPopover>
         </SidebarMenuItem>

@@ -2,32 +2,33 @@ import { FC, useMemo, useState } from 'react';
 
 import { PopoverTrigger } from '@radix-ui/react-popover';
 import { Settings, UserPlus, History } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
+import { IOrganizationPopoverProps } from './organization-popover.types';
 
 import { Button } from '@/shared/ui/button/button';
 import { Popover, PopoverContent } from '@/shared/ui/popover/popover';
 import { Separator } from '@/shared/ui/separator/separator';
 
-interface IOrganizationPopoverProps {
-  children: React.ReactNode;
-}
-
 const OrganizationPopover: FC<IOrganizationPopoverProps> = ({ children }) => {
+  const { t } = useTranslation('sidebar');
+
   const [open, setOpen] = useState(false);
 
   const organizationPopoverActions = useMemo(
     () => [
       {
-        name: 'Settings',
+        name: t('buttons.settings'),
         action: () => null,
         icon: Settings,
       },
       {
-        name: 'History',
+        name: t('buttons.history'),
         action: () => null,
         icon: History,
       },
     ],
-    [],
+    [t],
   );
 
   return (
@@ -43,7 +44,7 @@ const OrganizationPopover: FC<IOrganizationPopoverProps> = ({ children }) => {
         <Separator className="my-1" />
         <Button variant="ghost" className="justify-start" onClick={() => setOpen(false)}>
           <UserPlus className="mr-2 h-4 w-4" />
-          Invite
+          {t('buttons.invite')}
         </Button>
       </PopoverContent>
     </Popover>

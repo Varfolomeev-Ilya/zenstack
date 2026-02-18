@@ -1,4 +1,5 @@
 import { Atom } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import {
   SidebarHeader,
@@ -8,13 +9,15 @@ import {
 } from '@/shared/ui/sidebar/sidebar';
 
 const AppSidebarHeader = () => {
+  const { t } = useTranslation('sidebar');
+
   return (
     <SidebarHeader className="px-2 py-2.5">
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton
             className="hover:bg-transparent active:bg-transparent"
-            tooltip="Reload"
+            tooltip={t('buttons.reload')}
             onClick={() => window.location.reload()}
           >
             <Atom />

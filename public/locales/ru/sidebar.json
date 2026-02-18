@@ -1,0 +1,16 @@
+{
+  "buttons": {
+    "refresh": "Обновить",
+    "toggleSidebar": "Переключить боковое меню",
+    "spaces": "Пространства",
+    "organization": "Организация",
+    "home": "Домой",
+    "notifications": "Уведомления",
+    "goals": "Цели",
+    "profile": "Профиль",
+    "settings": "Настройки",
+    "history": "История",
+    "invite": "Пригласить",
+    "newSpace": "Новое пространство"
+  }
+}
