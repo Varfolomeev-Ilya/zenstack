@@ -8,7 +8,7 @@ import LoggedInPages from './layouts/logged-in-pages/logged-in-pages';
 import NotLoggedInPages from './layouts/not-logged-in-pages/not-logged-in-pages';
 
 import { useAuthStore } from '@/features/auth/model/auth.store';
-import Toast from '@/features/auth/ui/Toast/Toast';
+import Toast from '@/features/auth/ui/toast/toast';
 import { supabase } from '@/shared/api/supabase';
 import { AUTH_ROUTES } from '@/shared/constants';
 import { Spinner } from '@/shared/ui/spinner/spinner';
