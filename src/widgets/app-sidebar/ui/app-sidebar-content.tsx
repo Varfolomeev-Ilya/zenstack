@@ -1,8 +1,11 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Home, Bell, Trophy, ChevronDown, Plus, BadgePlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+import { useOrganizationStore } from '@/features/workspace/model/organization.store';
+import { useWorkspaceStore } from '@/features/workspace/model/workspace.store';
+import { useErrToast } from '@/shared/hooks/useErrToast';
 import { Button } from '@/shared/ui/button/button';
 import {
   Collapsible,
@@ -21,9 +24,32 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/shared/ui/sidebar/sidebar';
+import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 
 const AppSidebarContent = () => {
   const { t } = useTranslation('sidebar');
+  const { getOrganizationSpaces, addSpaceToOrganization, spaces } = useWorkspaceStore();
+  const { organization } = useOrganizationStore();
+
+  const { showErrToast } = useErrToast();
+
+  const [isSpacesLoading, setIsSpacesLoading] = useState(true);
+
+  const handleAddSpaceToOrganization = async () => {
+    if (!organization?.id) {
+      return;
+    }
+
+    try {
+      await addSpaceToOrganization({
+        organizationId: organization?.id,
+        name: 'Created space',
+        description: 'New space description',
+      });
+    } catch (err) {
+      showErrToast(err);
+    }
+  };
 
   const sidebarContentButtons = useMemo(
     () => [
@@ -45,6 +71,29 @@ const AppSidebarContent = () => {
     ],
     [t],
   );
+
+  useEffect(() => {
+    if (!organization?.id) {
+      return;
+    }
+
+    const handleGetOrganizationSpaces = async () => {
+      setIsSpacesLoading(true);
+
+      try {
+        await getOrganizationSpaces(organization.id);
+      } catch (err) {
+        showErrToast(err);
+      } finally {
+        setIsSpacesLoading(false);
+      }
+    };
+
+    handleGetOrganizationSpaces();
+  }, [organization?.id]);
+
+  console.log('spaces', spaces);
+
   return (
     <SidebarContent>
       <Separator className="my-2" />
@@ -63,36 +112,47 @@ const AppSidebarContent = () => {
       </SidebarGroupContent>
 
       <SidebarGroup>
-        <SidebarMenu>
-          <Collapsible defaultOpen className="group/collapsible">
-            <SidebarMenuItem>
-              <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={t('buttons.spaces')}>
-                  <BadgePlus />
-                  <span>{t('buttons.spaces')}</span>
-                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                </SidebarMenuButton>
-              </CollapsibleTrigger>
+        {isSpacesLoading ? (
+          <Skeleton className="h-8 w-full rounded-md" />
+        ) : (
+          <SidebarMenu>
+            <Collapsible defaultOpen className="group/collapsible">
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton tooltip={t('buttons.spaces')}>
+                    <BadgePlus />
+                    <span>{t('buttons.spaces')}</span>
+                    <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
 
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild>
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-between"
-                        onClick={() => null}
-                      >
-                        <span>{t('buttons.newSpace')}</span>
-                        <Plus className="h-4 w-4" />
-                      </Button>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarMenuSub>
-              </CollapsibleContent>
-            </SidebarMenuItem>
-          </Collapsible>
-        </SidebarMenu>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {spaces?.map(space => (
+                      <SidebarMenuSubItem key={space.id}>
+                        <SidebarMenuButton tooltip={space.name}>
+                          <span>{space.name}</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton asChild>
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-between"
+                          onClick={handleAddSpaceToOrganization}
+                        >
+                          <span>{t('buttons.newSpace')}</span>
+                          <Plus className="h-4 w-4" />
+                        </Button>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          </SidebarMenu>
+        )}
       </SidebarGroup>
     </SidebarContent>
   );
