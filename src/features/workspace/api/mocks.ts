@@ -2,7 +2,7 @@ import { IOrganization } from './organization.types';
 import { IOrganizationProject } from './project.types';
 import { IOrganizationSpace } from './workspace.types';
 
-import { IColumnTask, IProjectColumn } from '@/features/board/api/board.types';
+import { DefaultView, IColumnTask, IProjectColumn } from '@/features/board/api/board.types';
 
 export const mockStorage = {
   organizations: new Map<string, IOrganization>(),
@@ -98,10 +98,7 @@ export class MockDB {
       return null;
     }
 
-    return {
-      ...project,
-      columns: this.columns,
-    };
+    return project;
   }
 
   // basic getters
@@ -240,9 +237,12 @@ export class MockDB {
 
     return updatedOrg;
   }
-  updateProject(
-    data: Pick<IOrganizationProject, 'name' | 'description' | 'defaultView' | 'id'>,
-  ): IOrganizationProject | null {
+  updateProject(data: {
+    id: string;
+    name?: string;
+    description?: string;
+    defaultView?: DefaultView;
+  }): IOrganizationProject | null {
     const project = this.projects.get(data.id);
 
     if (!project) {
@@ -252,9 +252,9 @@ export class MockDB {
     const updatedProject = {
       ...project,
       updated_at: new Date().toISOString(),
-      name: data.name,
-      description: data.description,
-      defaultView: data.defaultView,
+      name: data.name ?? project.name,
+      description: data.description ?? project.description,
+      defaultView: data.defaultView ?? project.defaultView,
     };
 
     this.projects.set(data.id, updatedProject);
