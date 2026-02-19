@@ -95,14 +95,12 @@ const UserPopover = () => {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger>
-        <Button variant="ghost" size="icon" className="size-8 rounded-full">
-          <UserAvatar
-            firstName={user?.first_name}
-            lastName={user?.last_name}
-            avatarUrl={user?.avatar_url}
-          />
-        </Button>
+      <PopoverTrigger className="size-8 rounded-full hover:bg-accent hover:text-accent-foreground flex items-center">
+        <UserAvatar
+          firstName={user?.first_name}
+          lastName={user?.last_name}
+          avatarUrl={user?.avatar_url}
+        />
       </PopoverTrigger>
 
       <PopoverContent align="start" side="bottom" className="w-[240px] p-2 rounded-2xl">
