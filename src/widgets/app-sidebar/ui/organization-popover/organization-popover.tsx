@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 
 import { PopoverTrigger } from '@radix-ui/react-popover';
 import { Settings, UserPlus, History } from 'lucide-react';
@@ -6,14 +6,20 @@ import { useTranslation } from 'react-i18next';
 
 import { IOrganizationPopoverProps } from './organization-popover.types';
 
+import { useOrganizationStore } from '@/features/workspace/model/organization.store';
+import { useErrToast } from '@/shared/hooks/useErrToast';
 import { Button } from '@/shared/ui/button/button';
 import { Popover, PopoverContent } from '@/shared/ui/popover/popover';
 import { Separator } from '@/shared/ui/separator/separator';
+import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 
 const OrganizationPopover: FC<IOrganizationPopoverProps> = ({ children }) => {
   const { t } = useTranslation('sidebar');
+  const { getOrganization, organization } = useOrganizationStore();
+  const { showErrToast } = useErrToast();
 
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const organizationPopoverActions = useMemo(
     () => [
@@ -31,6 +37,27 @@ const OrganizationPopover: FC<IOrganizationPopoverProps> = ({ children }) => {
     [t],
   );
 
+  useEffect(() => {
+    const handleGerOrganizationData = async () => {
+      setIsLoading(true);
+
+      try {
+        await getOrganization('1');
+      } catch (err) {
+        showErrToast(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    handleGerOrganizationData();
+  }, []);
+
+  console.log('organization', organization);
+
+  if (isLoading) {
+    return <Skeleton className="w-full h-8" />;
+  }
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
