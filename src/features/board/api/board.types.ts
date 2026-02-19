@@ -63,7 +63,7 @@ export interface IAttachment {
 export interface IColumnTask extends INamedEntity {
   label?: string[];
   status?: TaskStatus;
-  creator: IUserShort;
+  creator?: IUserShort;
   dueDate?: string;
   priority?: TaskPriority;
   color?: string;
@@ -72,9 +72,12 @@ export interface IColumnTask extends INamedEntity {
   messages?: IMessage[];
   githubLink?: string;
   subTasks?: IColumnTask[];
+  order?: number;
+  column_id: string;
 }
 
 export interface IProjectColumn extends INamedEntity {
   order: number;
-  tasks?: IColumnTask[];
+  tasks: IColumnTask[];
+  project_id: string;
 }
