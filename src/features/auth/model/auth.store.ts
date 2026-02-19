@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 import { supabaseAuthClient } from '../api/auth-api';
 
-import { TAuthStore } from './types';
+import { TAuthStore } from './auth.types';
 
 export const useAuthStore = create<TAuthStore>(set => ({
   user: null,
