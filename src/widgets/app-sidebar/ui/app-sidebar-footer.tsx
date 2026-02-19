@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import OrganizationPopover from './organization-popover/organization-popover';
 
+import { useOrganizationStore } from '@/features/workspace/model/organization.store';
 import { useSidebar } from '@/shared/hooks/useSidebar';
 import {
   SidebarFooter,
@@ -14,6 +15,7 @@ import {
 const AppSidebarFooter = () => {
   const { t } = useTranslation('sidebar');
   const { state } = useSidebar();
+  const { organization } = useOrganizationStore();
   const isSidebarCollapsed = state === 'collapsed';
 
   return (
@@ -23,10 +25,14 @@ const AppSidebarFooter = () => {
           <OrganizationPopover>
             <SidebarMenuButton
               tooltip={t('buttons.organization')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 h-auto"
             >
               <Blocks />
-              {!isSidebarCollapsed && t('buttons.organization')}
+              <div className="flex flex-col justify-center w-full">
+                {!isSidebarCollapsed && t('buttons.organization')}
+
+                <p>{organization?.name}</p>
+              </div>
             </SidebarMenuButton>
           </OrganizationPopover>
         </SidebarMenuItem>
