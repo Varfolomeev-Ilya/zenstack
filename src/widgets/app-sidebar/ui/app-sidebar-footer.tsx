@@ -27,7 +27,7 @@ const AppSidebarFooter = () => {
               tooltip={t('buttons.organization')}
               className="flex items-center gap-2 h-auto"
             >
-              <Blocks />
+              <Blocks className="self-end mb-1" />
               <div className="flex flex-col justify-center w-full">
                 {!isSidebarCollapsed && t('buttons.organization')}
 
