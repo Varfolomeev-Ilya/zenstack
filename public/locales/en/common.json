@@ -16,7 +16,9 @@
     "repeatPasswordInput": {
       "label": "Repeat password",
       "placeholder": "Repeat password again"
-    }
+    },
+    "titleInput":{"label": "Title", "placeholder": "Enter title"},
+    "descriptionInput":{"label": "Description", "placeholder": "Enter description"}
   },
   "links": {
     "profile": "Profile",
