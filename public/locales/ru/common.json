@@ -15,7 +15,9 @@
     "repeatPasswordInput": {
       "label": "Подтвердите пароль",
       "placeholder": "Введите пароль еще раз"
-    }
+    },
+    "titleInput":{"label": "Заголовок", "placeholder": "Введите аголовок"},
+    "descriptionInput":{"label": "Описание", "placeholder": "Введите описание"}
   },
   "links": {
     "profile": "Профиль",

@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { Home, Bell, Trophy, ChevronDown, Plus, BadgePlus } from 'lucide-react';
+import { Home, Bell, Trophy, ChevronDown, BadgePlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+
+import NewSpaceDialog from './new-space-dialog/new-space-dialog';
 
 import { useOrganizationStore } from '@/features/workspace/model/organization.store';
 import { useWorkspaceStore } from '@/features/workspace/model/workspace.store';
@@ -28,28 +30,12 @@ import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 
 const AppSidebarContent = () => {
   const { t } = useTranslation('sidebar');
-  const { getOrganizationSpaces, addSpaceToOrganization, spaces } = useWorkspaceStore();
+  const { getOrganizationSpaces, spaces } = useWorkspaceStore();
   const { organization } = useOrganizationStore();
 
   const { showErrToast } = useErrToast();
 
   const [isSpacesLoading, setIsSpacesLoading] = useState(true);
-
-  const handleAddSpaceToOrganization = async () => {
-    if (!organization?.id) {
-      return;
-    }
-
-    try {
-      await addSpaceToOrganization({
-        organizationId: organization?.id,
-        name: 'Created space',
-        description: 'New space description',
-      });
-    } catch (err) {
-      showErrToast(err);
-    }
-  };
 
   const sidebarContentButtons = useMemo(
     () => [
@@ -137,14 +123,7 @@ const AppSidebarContent = () => {
                     ))}
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton asChild>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-between"
-                          onClick={handleAddSpaceToOrganization}
-                        >
-                          <span>{t('buttons.newSpace')}</span>
-                          <Plus className="h-4 w-4" />
-                        </Button>
+                        <NewSpaceDialog />
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
